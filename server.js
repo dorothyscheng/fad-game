@@ -19,11 +19,12 @@ app.use('/games', gamesController);
 // });
 
 
-////////////////////////////////////////////
+////////////////////////////////////////////ROUTES
+// Home
 app.get('/', (req,res) => {
     res.render('home.ejs');
 });
 ////////////////////////////////////////////
 app.listen(PORT, () => {
-    console.log(`Server Active: Port ${PORT}`);
+    console.log(`Server Active: http://localhost:${PORT}`);
 });
