@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+    <title>New Game</title>
+  </head>
+  <body>
+    <main>
+      <h1>New Game</h1>
+      <form action="/games" method="POST">
+        <label for="name" class="list-title">Name:</label>
+        <input type="text" name="name" id="gameName" />
+
+        <label for="description" class="list-title">Description:</label>
+        <input type="text" name="description" id="gameDescription" />
+
+        <div>
+          <label for="minPlayers" class="list-title"
+            >Minimum Number of Players:</label
+          >
+          <input type="number" name="minPlayers" id="gameMinPlayers" />
+
+          <label for="maxPlayers" class="list-title"
+            >Maximum Number of Players:</label
+          >
+          <input type="number" name="maxPlayers" id="gameMaxPlayers" />
+        </div>
+
+        <div>
+          <label for="minPlayTime" class="list-title">Minimum Play Time:</label>
+          <input type="number" name="minPlayTime" id="gameMinPlayTime" />
+
+          <label for="maxPlayTime" class="list-title">Maximum Play Time:</label>
+          <input type="number" name="maxPlayTime" id="gameMaxPlayTime" />
+        </div>
+
+        <label for="ageRating" class="list-title">Age Rating:</label>
+        <input type="number" name="ageRating" id="gameAgeRating" />
+
+        <label for="designer" class="list-title">Designers:</label>
+        <input type="text" name="designer" id="gameDesigner" />
+
+        <label for="userRating" class="list-title">User Rating:</label>
+        <input type="number" name="userRating" id="gameUserRating" />
+
+        <label for="genre" class="list-title">Genres:</label>
+        <input type="text" name="genre" id="gameGenre" />
+
+        <label for="image" class="list-title">Image URL:</label>
+        <input type="text" name="image" id="gameImage" />
+      </form>
+    </main>
+  </body>
+</html>

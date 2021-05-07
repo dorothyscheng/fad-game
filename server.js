@@ -11,13 +11,17 @@ app.use(express.urlencoded({extended:false}));
 
 app.use('/games', gamesController);
 
-/////////////Dummy Data
+
+
+
+
+
+// ///////////Dummy Data
 // const tempGames = require('./models/tempGames');
 // db.Game.create(tempGames,(err,allGames) => {
 //     if (err) return console.log(err);
 //     console.log(allGames);
 // });
-
 
 ////////////////////////////////////////////ROUTES
 // Home
