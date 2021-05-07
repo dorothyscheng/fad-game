@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title><%= selected.name %>></title>
+</head>
+<body>
+    <main>
+        <h1><%= selected.name %></h1>
+        <img src="<%= selected.image %>" alt="<%= selected.name %> game box">
+        <ul>
+            <li><span class="list-title">Description:</span> <%= selected.description %></li>
+            <li><span class="list-title">Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
+            <li><span class="list-title">Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
+            <li><span class="list-title">Age Rating:</span> <%= selected.ageRating %>+</li>
+            <li><span class="list-title">Designers:</span> <%= selected.designer %></li>
+            <li><span class="list-title">Average User Rating:</span> <%= avgRating %></li>
+            <li><span class="list-title">Genres:</span> <%= selected.genre.join(', ') %></li>
+        </ul>
+    </main>
+</body>
+</html>

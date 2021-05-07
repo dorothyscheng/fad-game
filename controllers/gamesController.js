@@ -10,5 +10,14 @@ router.get('/', async (req,res)=>{
         games: allGames,
     });
 });
+// Show
+router.get('/:id', async (req,res)=>{
+    const selectedGame= await db.Game.findById({_id: req.params.id});
+    const averageRating= selectedGame.userRatings.reduce((acc,curr)=>acc+curr)/selectedGame.userRatings.length;
+    res.render('games/game-show',{
+        selected: selectedGame,
+        avgRating: averageRating.toFixed(2),
+    });
+});
 
 module.exports = router;

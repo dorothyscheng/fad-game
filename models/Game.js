@@ -7,10 +7,7 @@ const gameSchema = new mongoose.Schema({
         min: {type: Number, min: 1},
         max: Number
         },
-    ageRating: {
-        min: {type: Number, min: 1},
-        max: Number
-        },
+    ageRating: {type: Number, min: 1},
     playTime: {
         min: {type: Number, min: 1},
         max: Number

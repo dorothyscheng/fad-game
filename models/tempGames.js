@@ -6,9 +6,7 @@ const tempGameArray = [
             min: 1,
             max: 5
             },
-        ageRating: {
-            min: 10
-            },
+        ageRating: 10,
         playTime: {
             min: 40,
             max: 70
@@ -25,9 +23,7 @@ const tempGameArray = [
             min: 3,
             max: 4
             },
-        ageRating: {
-            min: 10
-            },
+        ageRating: 10,
         playTime: {
             min: 60,
             max: 120
@@ -44,9 +40,7 @@ const tempGameArray = [
             min: 1,
             max: 4
             },
-        ageRating: {
-            min: 14
-            },
+        ageRating: 14,
         playTime: {
             min: 60,
             max: 180
