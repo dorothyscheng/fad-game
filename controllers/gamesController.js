@@ -16,7 +16,36 @@ router.get('/new', (req, res) => {
   res.render('games/game-new');
 });
 
+//POST
+router.post('/', async (req, res) => {
+  //object with min and max players
+  const player = {
+    min: req.body.minPlayers,
+    max: req.body.maxPlayers,
+  };
 
+  const playTime = {
+    min: req.body.minPlayTime,
+    max: req.body.maxPlayTime,
+  };
+
+  const designersArr = req.body.designer.split(', ');
+  const genreArr = req.body.genre.split(', ');
+
+  await db.Game.create({
+    name: req.body.name,
+    description: req.body.description,
+    numPlayers: player,
+    ageRating: req.body.ageRating,
+    playTime: playTime,
+    designer: designersArr,
+    image: req.body.image,
+    userRatings: [req.body.usersRating],
+    genre: genreArr,
+  });
+
+  res.redirect('/games');
+});
 
 // Show
 router.get('/:id', async (req, res) => {
