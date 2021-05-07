@@ -19,5 +19,5 @@ mongoose.connection.on('error', (err) => {
 });
 
 module.exports = { 
-  Games: require('./Game')
+  Game: require('./Game')
 }
