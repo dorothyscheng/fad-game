@@ -3,37 +3,33 @@ const router = express.Router();
 const db = require('../models/index');
 const methodOverride = require('method-override');
 
-// Index
+router.use(methodOverride('_method'));
+
+// INDEX
 router.get('/', async (req, res) => {
   const allGames = await db.Game.find();
   res.render('games/game-index', {
     games: allGames,
   });
 });
-
 //NEW
 router.get('/new', (req, res) => {
   res.render('games/game-new');
 });
-
 //POST
 router.post('/', async (req, res) => {
-  //object with min and max players
   const player = {
     min: req.body.minPlayers,
     max: req.body.maxPlayers,
   };
-
   const playTime = {
     min: req.body.minPlayTime,
     max: req.body.maxPlayTime,
   };
-
   const designersArr = req.body.designer.split(', ');
   const genreArr = req.body.genre.split(', ');
   const userRatings = [];
   userRatings.push(req.body.userRating);
-
   await db.Game.create({
     name: req.body.name,
     description: req.body.description,
@@ -45,10 +41,8 @@ router.post('/', async (req, res) => {
     userRatings: userRatings,
     genre: genreArr,
   });
-
   res.redirect('/games');
 });
-
 // Show
 router.get('/:id', async (req, res) => {
   const selectedGame = await db.Game.findById({ _id: req.params.id });
@@ -60,5 +54,10 @@ router.get('/:id', async (req, res) => {
     avgRating: averageRating.toFixed(2),
   });
 });
+// DESTROY
+router.delete('/:id', async (req,res)=>{
+  await db.Game.findByIdAndDelete({_id: req.params.id})
+  res.redirect('/games');
+})
 
 module.exports = router;
