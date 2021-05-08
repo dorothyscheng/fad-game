@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
   });
   res.redirect('/games');
 });
-// Show
+// SHOW
 router.get('/:id', async (req, res) => {
   const selectedGame = await db.Game.findById({ _id: req.params.id });
   const averageRating =
@@ -54,6 +54,17 @@ router.get('/:id', async (req, res) => {
     avgRating: averageRating.toFixed(2),
   });
 });
+// EDIT
+router.get('/:id/edit', async (req,res) => {
+  const selectedGame = await db.Game.findById({ _id: req.params.id });
+  const averageRating =
+    selectedGame.userRatings.reduce((acc, curr) => acc + curr) /
+    selectedGame.userRatings.length;
+  res.render('games/game-edit', {
+    selected: selectedGame,
+    avgRating: parseFloat(averageRating.toFixed(2)),
+  });
+})
 // DESTROY
 router.delete('/:id', async (req,res)=>{
   await db.Game.findByIdAndDelete({_id: req.params.id})

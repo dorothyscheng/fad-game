@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>Edit <%= selected.name %></title>
+</head>
+<body>
+    <main>
+        <h1>Edit <%= selected.name %></h1>
+        <form action="/games/<%= selected._id %>?_method=PUT" method="POST">
+            <label for="name" class="list-title">Name:</label>
+            <input type="text" name="name" id="gameName" value="<%= selected.name %>" />
+            <label for="description" class="list-title">Description:</label>
+            <input type="text" name="description" id="gameDescription" value="<%= selected.description %>" />
+            <div>
+              <label for="minPlayers" class="list-title">Minimum Number of Players:</label>
+              <input type="number" name="minPlayers" id="gameMinPlayers" value="<%= selected.numPlayers.min %>" />
+              <label for="maxPlayers" class="list-title">Maximum Number of Players:</label>
+              <input type="number" name="maxPlayers" id="gameMaxPlayers" value="<%= selected.numPlayers.max %>" />
+            </div>
+            <div>
+              <label for="minPlayTime" class="list-title">Minimum Play Time:</label>
+              <input type="number" name="minPlayTime" id="gameMinPlayTime" value="<%= selected.playTime.min %>" />
+              <label for="maxPlayTime" class="list-title">Maximum Play Time:</label>
+              <input type="number" name="maxPlayTime" id="gameMaxPlayTime" value="<%= selected.playTime.max %>" />
+            </div>
+            <label for="ageRating" class="list-title">Age Rating:</label>
+            <input type="number" name="ageRating" id="gameAgeRating" value="<%= selected.ageRating %>" />
+            <label for="designer" class="list-title">Designers:</label>
+            <input type="text" name="designer" id="gameDesigner" value="<%= selected.designer.join(', ') %>" />
+            <label for="userRating" class="list-title">User Rating:</label>
+            <input type="number" name="userRating" id="gameUserRating" value="<%= avgRating %>" />
+            <label for="genre" class="list-title">Genres:</label>
+            <input type="text" name="genre" id="gameGenre" value="<%= selected.genre.join(', ') %>" />
+            <label for="image" class="list-title">Image URL:</label>
+            <input type="text" name="image" id="gameImage" value="<%= selected.image %>" />
+            <button type="submit">Submit</button>
+          </form>
+    </main>
+</body>
+</html>
