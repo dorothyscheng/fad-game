@@ -31,6 +31,8 @@ router.post('/', async (req, res) => {
 
   const designersArr = req.body.designer.split(', ');
   const genreArr = req.body.genre.split(', ');
+  const userRatings = [];
+  userRatings.push(req.body.userRating);
 
   await db.Game.create({
     name: req.body.name,
@@ -40,7 +42,7 @@ router.post('/', async (req, res) => {
     playTime: playTime,
     designer: designersArr,
     image: req.body.image,
-    userRatings: [req.body.usersRating],
+    userRatings: userRatings,
     genre: genreArr,
   });
 
