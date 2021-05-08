@@ -65,6 +65,37 @@ router.get('/:id/edit', async (req,res) => {
     avgRating: parseFloat(averageRating.toFixed(2)),
   });
 })
+// PUT
+router.put('/:id', async (req,res) => {
+  const player = {
+    min: req.body.minPlayers,
+    max: req.body.maxPlayers,
+  };
+  const playTime = {
+    min: req.body.minPlayTime,
+    max: req.body.maxPlayTime,
+  };
+  const designersArr = req.body.designer.split(', ');
+  const genreArr = req.body.genre.split(', ');
+  const userRatings = [];
+  userRatings.push(req.body.userRating);
+  await db.Game.findByIdAndUpdate(
+    {_id: req.params.id},
+    {
+      $set: {
+        name: req.body.name,
+        description: req.body.description,
+        numPlayers: player,
+        ageRating: req.body.ageRating,
+        playTime: playTime,
+        designer: designersArr,
+        image: req.body.image,
+        userRatings: userRatings,
+        genre: genreArr,
+      }
+  });
+  res.redirect(`/games/${req.params.id}`);
+})
 // DESTROY
 router.delete('/:id', async (req,res)=>{
   await db.Game.findByIdAndDelete({_id: req.params.id})
