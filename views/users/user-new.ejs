@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <title>New Game</title>
+  </head>
+  <body>
+    <main>
+      <%- include('../partials/nav') %>
+      <div class="threeContainer">
+        <div class=picHolder>
+          game box
+        </div>
+        <div class=formHolder>
+          <h1>New Game</h1>
+          <form action="/users" method="POST">
+            <div>
+                <label for="username" class="list-title">Username:</label>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <label for="password" class="list-title">Password: </label>
+                <input type="text" name="password">
+            </div>
+            <div>
+                <label for="age" class="list-title">Age: </label>
+                <input type="number" name="age">
+            </div>
+            <div>
+                <label for="profilePic" class="list-title">Profile Pic (URL):</label>
+                <input type="text" name="profilePic">
+            </div>
+            <div>
+                <label for="preferredGenre" class="list-title">Preferred Genre:</label>
+                <input type="text" name="preferredGenre">
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%- include('../partials/footer') %>
+    </main>
+  </body>
+</html>

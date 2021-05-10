@@ -15,6 +15,16 @@ const userSchema = new mongoose.Schema({
       ref: 'Review',
     },
   ],
+  cart: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Game'
+    }
+  ],
+  age: Number,
+  profilePic: String,
+  preferredGenre: String,
+  isAdmin: Boolean,
 });
 
 const User = mongoose.model('User', userSchema);

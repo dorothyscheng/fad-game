@@ -12,5 +12,14 @@ router.get('/',async (req,res)=>{
         users: allUsers,
     });
 })
+// New
+router.get('/new',(req,res)=>{
+    res.render('users/user-new');
+});
+// Post
+router.post('/',async (req,res)=>{
+    await db.User.create(req.body);
+    res.redirect('/users');
+});
 
 module.exports=router;
