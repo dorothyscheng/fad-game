@@ -45,7 +45,11 @@ router.post('/', async (req, res) => {
 });
 // SHOW
 router.get('/:id', async (req, res) => {
-  const selectedGame = await db.Game.findById({ _id: req.params.id });
+  const selectedGame = await db.Game.findById({ _id: req.params.id })
+    .populate({
+      path: 'reviews',
+        populate: {path: 'game'}
+    });
   //const averageRating =
     //selectedGame.userRatings.reduce((acc, curr) => acc + curr) /
     //selectedGame.userRatings.length;

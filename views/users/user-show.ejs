@@ -9,8 +9,8 @@
         <%- include('../partials/nav') %>
         <h1><%= selected.username %></h1>
         <img src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
+        <span class="list-title">All Reviews:</span>
         <ul>
-            <li><span class="list-title">All Reviews:</span>
                 <% selected.reviews.forEach(element => { %>
                     <li>
                         <a href="/games/<%= element.game._id %>"><%= element.game.name %></a>
@@ -22,7 +22,6 @@
                         </form>
                     </li>
                 <% }); %>
-            </li>
         </ul>
         <%- include('../partials/footer') %>
     </main>
