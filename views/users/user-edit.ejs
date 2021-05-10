@@ -11,7 +11,7 @@
         <div class="picHolder">game box</div>
         <div class="formHolder">
           <h1>Edit User</h1>
-          <form action="/users" method="POST">
+          <form action="/users/<%= selected._id %>?_method=PUT" method="POST">
             <div>
               <label for="username" class="list-title">Username:</label>
               <input
