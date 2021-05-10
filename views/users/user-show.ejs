@@ -16,6 +16,10 @@
                         <a href="/games/<%= element.game._id %>"><%= element.game.name %></a>
                         <%= element.rating %>
                         <%= element.review %>
+                        <a href="/reviews/<%= element._id %>/edit">Edit Review</a>
+                        <form action="/reviews/<%= element._id %>?_method=DELETE" method="POST">
+                            <button type="submit">Delete Review</button>
+                        </form>
                     </li>
                 <% }); %>
             </li>

@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
     selected: selected,
   });
 });
-
+// Edit
 router.get('/:id/edit', async (req, res) => {
   const selected = await db.User.findById({
     _id: req.params.id,
@@ -40,7 +40,7 @@ router.get('/:id/edit', async (req, res) => {
     selected: selected,
   });
 });
-
+// Update
 router.put('/:id', async (req, res) => {
   await db.User.findByIdAndUpdate(
     { _id: req.params.id },
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
   );
   res.redirect(`/users/${req.params.id}`);
 });
-
+// Destroy
 router.delete('/:id', async (req, res) => {
   await db.User.findByIdAndDelete({ _id: req.params.id });
   await db.Review.deleteMany({ user: req.params.id });

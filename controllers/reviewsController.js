@@ -23,7 +23,18 @@ router.post('/',async (req,res)=>{
     game.reviews.push(newReview._id);
     await game.save();
     await user.save();
-    res.send(newReview);
+    res.redirect(`/users/${user._id}`);
+});
+// Delete
+router.delete('/:id', async (req,res)=>{
+    const review = await db.Review.findByIdAndDelete({_id: req.params.id});
+    const user = await db.User.findOne({reviews: req.params.id});
+    const game = await db.Game.findOne({reviews: req.params.id});
+    user.reviews.remove(req.params.id);
+    await user.save();
+    game.reviews.remove(req.params.id);
+    await game.save();
+    res.redirect(`/users/${user._id}`);
 });
 
 module.exports=router;
