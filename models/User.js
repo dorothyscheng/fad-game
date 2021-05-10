@@ -9,10 +9,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  gameReviews: [
+  reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Game',
+      ref: 'Review',
     },
   ],
 });
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
