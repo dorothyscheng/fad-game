@@ -26,7 +26,7 @@ router.post('/',async (req,res)=>{
     res.redirect(`/users/${user._id}`);
 });
 // Edit
-router.get ('/:id/edit', async (req,res) => {
+router.get('/:id/edit', async (req,res) => {
     const selected = await db.Review.findById({_id: req.params.id})
         .populate('game')
         .populate('user');
@@ -34,6 +34,19 @@ router.get ('/:id/edit', async (req,res) => {
         selected: selected,
     });
 });
+// Update
+router.put('/:id', async (req,res) =>{
+    const user = await db.User.findOne({reviews: req.params.id});
+    await db.Review.findByIdAndUpdate(
+        {_id: req.params.id},
+        {
+            $set: {
+                rating: req.body.rating,
+                review: req.body.review,
+            }
+    });
+    res.redirect(`/users/${user._id}`);
+})
 // Delete
 router.delete('/:id', async (req,res)=>{
     const review = await db.Review.findByIdAndDelete({_id: req.params.id});
