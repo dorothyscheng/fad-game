@@ -19,6 +19,8 @@ router.post('/',async (req,res)=>{
         rating: req.body.rating,
         review: req.body.review,
     });
+    user.reviews.push(newReview._id);
+    await user.save();
     res.send(newReview);
 });
 

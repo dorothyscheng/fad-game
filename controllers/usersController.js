@@ -23,14 +23,14 @@ router.post('/',async (req,res)=>{
 });
 // Show
 router.get('/:id',async (req,res)=>{
-    const selected = await db.User.findById({_id: req.params.id})
-        .populate('reviews');
-    const reviews = selected.reviews;
-    // res.send(reviews);
-    res.render('users/user-show',{
-        selected: selected,
-        reviews: reviews,
-    });
+    const selected = await db.User.findById({_id: req.params.id});
+    selected.populate('reviews');
+    // const reviews = selected.reviews;
+    res.send(selected);
+    // res.render('users/user-show',{
+    //     selected: selected,
+    //     reviews: reviews,
+    // });
 });
 
 module.exports=router;
