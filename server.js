@@ -19,8 +19,6 @@ app.use('/users', usersController);
 app.use('/reviews',reviewsController);
 
 
-
-
 // ///////////Dummy Data
 // const tempGames = require('./models/tempGames');
 // db.Game.create(tempGames,(err,allGames) => {

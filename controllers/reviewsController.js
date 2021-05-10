@@ -9,5 +9,17 @@ router.use(methodOverride('_method'));
 router.get('/new', (req,res)=> {
     res.render('reviews/review-new');
 });
+// Post
+router.post('/',async (req,res)=>{
+    const user= await db.User.findOne({username: req.body.username});
+    const game= await db.Game.findOne({name: req.body.gameName});
+    const newReview = await db.Review.create({
+        user: user._id,
+        game: game._id,
+        rating: req.body.rating,
+        review: req.body.review,
+    });
+    res.send(newReview);
+});
 
 module.exports=router;
