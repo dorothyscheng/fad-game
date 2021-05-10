@@ -7,19 +7,32 @@
 <body>
     <main>
         <%- include('../partials/nav') %>
-        <h1>Game Index</h1>
-        <ul>
-            <% games.forEach(element=>{ %>
-                <li><a href="/games/<%= element._id %>"><%= element.name %></a>
-                    <div>
-                        <a href="/games/<%= element._id %>/edit">Edit</a>
-                        <form action="/games/<%= element._id %>?_method=DELETE" method="POST">
-                            <button type="submit">DELETE</button>
-                        </form>
+        <section id="indexContainer">
+            <div class="adLong">
+                ad
+            </div>
+                <ul class="indexUl">
+                <% games.forEach(element=>{ %>
+                <li id="indexList">
+                    <div class="picHolder">game box</div>
+                    <div class=indexInfo>
+                        <a class="title" href="/games/<%= element._id %>"><%= element.name %></a>
+                        <p><%=element.description%></p>
+                        <div class="editDelete">
+                            <a href="/games/<%= element._id %>/edit">Edit</a>
+                            <form action="/games/<%= element._id %>?_method=DELETE" method="POST">
+                                <button type="submit">DELETE</button>
+                            </form>
+                        </div>
                     </div>
                 </li>
-            <% }) %>
-        </ul>
+                <% }) %>
+                </ul>
+            <div class="adLong">
+                ad
+            </div>
+        </section>
+        <%- include('../partials/footer') %>
     </main>
 </body>
 </html>

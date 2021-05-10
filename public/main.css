@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(255, 233, 234);
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+/* -------------------------NAV CSS--------------- */
+.nav {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: palevioletred;
+}
+.nav li {
+    display: inline;
+}
+.nav a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+.nav a:hover {
+    color: white;
+}
+/* -------------------------NAV END--------------- */
+/* -------------------------FOOTER CSS--------------- */
+footer {
+    height: 30px;
+    width: 100%;
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: palevioletred;
+}
+/* -------------------------FOOTER END--------------- */
+main {
+    width: 800px;
+    box-sizing: border-box;
+}
+
+#mainFeatured {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+}
+
+.threeContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+.threeSet {
+    width: 31%;
+    height: 200px; /* placeholder */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+    background-color: palevioletred;
+}
+.fourPanel {
+    width: 40%;
+    height: 40%;
+    background-color: pink;
+}
+
+.circleContainer {
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.round {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+}
+
+.halfSet {
+    margin-bottom: 20px;
+    width: 45%;
+    height: 200px;
+    background-color: palevioletred;
+}
+.fourthSet {
+    width: 25%;
+    height: 200px;
+    background-color: palevioletred;
+}
+
+
+/* --------------------------------INDEX CSS---------------- */
+#indexContainer {
+    display: flex;
+    flex-direction: row;
+}
+.adLong {
+    margin-top: 10px;
+    height: 600px;
+    width: 15%;
+    background-color: rgb(216, 138, 164);
+}
+.indexUl {
+    list-style-type: none;
+    width: 70%;
+}
+.title {
+    font-size: 20px;
+}
+
+#indexList {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.picHolder {
+    height: 100px;
+    width: 25%;
+    background-color: palevioletred;
+}
+.editDelete button {
+    background: none;
+    border-radius: 5px;
+    padding: 3px;
+}
+.editDelete button:hover{ 
+    background: red;
+    color: white;
+}
+.indexInfo {
+    width: 75%;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.indexInfo a{
+    text-decoration: none;
+    color: black;
+}
+.indexInfo a:hover{
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+/* --------------------------------INDEX END---------------- */
+.picHolder {
+    width: 40%;
+    height: 200px;
+    border: 1px solid black;
+}
+.formHolder {
+    width: 60%;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+}

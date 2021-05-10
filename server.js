@@ -7,6 +7,10 @@ const gamesController = require('./controllers/gamesController');
 const db = require('./models');
 app.set('view engine','ejs');
 app.use(express.urlencoded({extended:false}));
+
+/////////////////CSS
+const path=require('path');
+app.use(express.static(path.join(__dirname,'public')));
 ////////////////////////////////////////////
 
 app.use('/games', gamesController);
