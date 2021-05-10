@@ -6,7 +6,7 @@ mongoose.connect(connect, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
 mongoose.connection.on('connected', () => {
   console.log(`Welcome aboard! All systems online.`);
@@ -18,6 +18,7 @@ mongoose.connection.on('error', (err) => {
   console.log('ALERT! Error:', err);
 });
 
-module.exports = { 
-  Game: require('./Game')
-}
+module.exports = {
+  Game: require('./Game'),
+  Review: require('./Review'),
+};
