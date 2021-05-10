@@ -20,6 +20,8 @@ router.post('/',async (req,res)=>{
         review: req.body.review,
     });
     user.reviews.push(newReview._id);
+    game.reviews.push(newReview._id);
+    await game.save();
     await user.save();
     res.send(newReview);
 });
