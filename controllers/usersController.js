@@ -57,4 +57,10 @@ router.put('/:id', async (req, res) => {
   res.redirect(`/users/${req.params.id}`);
 });
 
+router.delete('/:id', async (req, res) => {
+  await db.User.findByIdAndDelete({ _id: req.params.id });
+  await db.Review.deleteMany({ user: req.params.id });
+  res.redirect('/users');
+});
+
 module.exports = router;
