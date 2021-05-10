@@ -21,5 +21,16 @@ router.post('/',async (req,res)=>{
     await db.User.create(req.body);
     res.redirect('/users');
 });
+// Show
+router.get('/:id',async (req,res)=>{
+    const selected = await db.User.findById({_id: req.params.id})
+        .populate('reviews');
+    const reviews = selected.reviews;
+    // res.send(reviews);
+    res.render('users/user-show',{
+        selected: selected,
+        reviews: reviews,
+    });
+});
 
 module.exports=router;
