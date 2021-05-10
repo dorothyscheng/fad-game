@@ -11,9 +11,16 @@
         <img src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
         <ul>
             <li><span class="list-title">All Reviews:</span>
-                <%= reviews %>
+                <% selected.reviews.forEach(element => { %>
+                    <li>
+                        <a href="/games/<%= element.game._id %>"><%= element.game.name %></a>
+                        <%= element.rating %>
+                        <%= element.review %>
+                    </li>
+                <% }); %>
             </li>
         </ul>
+        <%- include('../partials/footer') %>
     </main>
 </body>
 </html>

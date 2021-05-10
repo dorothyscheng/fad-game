@@ -23,15 +23,12 @@ router.post('/',async (req,res)=>{
 });
 // Show
 router.get('/:id',async (req,res)=>{
-        const selected = await db.User.findById({_id: req.params.id}).populate({path:'reviews', 
-            populate: {path:'game'}
-        });
-    // await selected
-    res.send(selected);
-    // res.render('users/user-show',{
-    //     selected: selected,
-    //     reviews: reviews,
-    // });
+    const selected = await db.User.findById({_id: req.params.id}).populate({path:'reviews', 
+        populate: {path:'game'}
+    });
+    res.render('users/user-show',{
+        selected: selected
+    });
 });
 
 module.exports=router;
