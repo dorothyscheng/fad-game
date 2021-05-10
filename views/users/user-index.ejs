@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+    <title>All Users</title>
+</head>
+<body>
+    <main>
+      <%- include('../partials/nav') %>
+        <h1>All Users</h1>
+        <section id="indexContainer">
+            <div class="adLong">
+                ad
+            </div>
+                <ul class="indexUl">
+                <% users.forEach(element=>{ %>
+                <li id="indexList">
+                    <div class="picHolder">user profile pic</div>
+                    <div class=indexInfo>
+                        <a class="title" href="/users/<%= element._id %>"><%= element.username %></a>
+                        <div class="editDelete">
+                            <a href="/users/<%= element._id %>/edit">Edit</a>
+                            <form action="/users/<%= element._id %>?_method=DELETE" method="POST">
+                                <button type="submit">DELETE</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <% }) %>
+                </ul>
+            <div class="adLong">
+                ad
+            </div>
+        </section>
+        <%- include('../partials/footer') %>
+    </main>
+    
+</body>
+</html>
