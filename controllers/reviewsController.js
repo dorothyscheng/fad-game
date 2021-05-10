@@ -25,6 +25,15 @@ router.post('/',async (req,res)=>{
     await user.save();
     res.redirect(`/users/${user._id}`);
 });
+// Edit
+router.get ('/:id/edit', async (req,res) => {
+    const selected = await db.Review.findById({_id: req.params.id})
+        .populate('game')
+        .populate('user');
+    res.render('reviews/review-edit',{
+        selected: selected,
+    });
+});
 // Delete
 router.delete('/:id', async (req,res)=>{
     const review = await db.Review.findByIdAndDelete({_id: req.params.id});

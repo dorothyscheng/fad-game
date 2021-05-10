@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <title>Edit Review</title>
+  </head>
+  <body>
+    <main>
+      <%- include('../partials/nav') %>
+      <div class="threeContainer">
+        <div class=formHolder>
+          <h1>Edit Review</h1>
+          <form action="/reviews" method="POST">
+            <div>
+                <label for="username" class="list-title">Username:</label>
+                <input type="text" name="username"  value="<%= selected.user.username %>">
+            </div>
+            <div>
+                <label for="gameName" class="list-title">Game Name: </label>
+                <input type="text" name="gameName" value="<%= selected.game.name %>">
+            </div>
+            <div>
+                <label for="rating" class="list-title">Rating (1-10):</label>
+                <input type="number" name="rating" value="<%= selected.rating %>">
+            </div>
+            <div>
+                <label for="review" class="list-title">Review:</label>
+                <input type="text" name="review" value="<%= selected.review %>">
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%- include('../partials/footer') %>
+    </main>
+  </body>
+</html>
