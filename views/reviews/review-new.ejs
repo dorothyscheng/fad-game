@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <title>New Review</title>
+  </head>
+  <body>
+    <main>
+      <%- include('../partials/nav') %>
+      <div class="threeContainer">
+        <div class=formHolder>
+          <h1>New Review</h1>
+          <form action="/reviews" method="POST">
+            <div>
+                <label for="username" class="list-title">Username:</label>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <label for="gameName" class="list-title">Game Name: </label>
+                <input type="text" name="gameName">
+            </div>
+            <div>
+                <label for="rating" class="list-title">Rating (1-10):</label>
+                <input type="number" name="rating">
+            </div>
+            <div>
+                <label for="review" class="list-title">Review:</label>
+                <input type="text" name="review">
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%- include('../partials/footer') %>
+    </main>
+  </body>
+</html>

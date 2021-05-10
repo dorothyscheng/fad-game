@@ -2,7 +2,8 @@ const PORT = 4000;
 const express = require('express');
 const app = express();
 const gamesController = require('./controllers/gamesController');
-const usersController = require('./controllers/usersController') //STRETCH
+const usersController = require('./controllers/usersController');
+const reviewsController = require('./controllers/reviewsController');
 // const designerController = require('./controllers/designerController'); //STRETCH
 const db = require('./models');
 app.set('view engine','ejs');
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/games', gamesController);
 app.use('/users', usersController);
-
+app.use('/reviews',reviewsController);
 
 
 
