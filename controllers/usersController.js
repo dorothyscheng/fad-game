@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 
 router.use(methodOverride('_method'));
 
+/////////login
 router.get('/login', (req, res) => {
   res.render('users/user-login');
 });
@@ -17,10 +18,29 @@ router.post('/login', async (req, res) => {
   }
   const match = await bcrypt.compare(req.body.password, user.password);
   if (match) {
+    if (user.isAdmin) {
+      req.session.isAdmin = true;
+    }
+    req.session.currentUser = user.username;
+
     res.redirect(`/users/${user._id}`);
   } else {
     res.redirect('/users/login');
   }
+});
+//////login redirect
+function requireLogin(req,res,next) {
+  if (!req.session.currentUser) {
+      res.redirect('/users/login');
+  } else {
+      next();
+  };
+};
+
+/////////log out
+router.get('/logout', async (req, res) => {
+  await req.session.destroy();
+  res.redirect('/');
 });
 
 // Index
@@ -105,12 +125,19 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 // Destroy
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
-    await db.User.findByIdAndDelete({ _id: req.params.id });
-    await db.Review.deleteMany({ user: req.params.id });
-    res.redirect('/users');
+    const user = await db.User.findById({_id: req.params.id});
+    if (
+      req.session.isAdmin === true || 
+      req.session.currentUser === user.username 
+    ){
+      await db.User.findByIdAndDelete({ _id: req.params.id });
+      await db.Review.deleteMany({ user: req.params.id });
+      res.redirect('/users');
+    }; 
   } catch (error) {
+    error.statusCode = 401;
     next(error);
   }
 });
