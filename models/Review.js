@@ -9,7 +9,7 @@ const reviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game',
   },
-  rating: Number,
+  rating: {type: Number, required: true},
   review: String,
 });
 
