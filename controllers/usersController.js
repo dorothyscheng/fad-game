@@ -96,9 +96,15 @@ router.get('/:id/edit', async (req, res, next) => {
     const selected = await db.User.findById({
       _id: req.params.id,
     });
-    res.render('users/user-edit', {
-      selected: selected,
-    });
+    if (
+      req.session.isAdmin === true || 
+      req.session.currentUser === selected.username 
+    ){
+      res.render('users/user-edit', {
+        selected: selected,
+      }
+    );
+    }
   } catch (error) {
     error.statusCode = 404;
     next(error);
@@ -107,12 +113,13 @@ router.get('/:id/edit', async (req, res, next) => {
 // Update
 router.put('/:id', async (req, res, next) => {
   try {
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
     await db.User.findByIdAndUpdate(
       { _id: req.params.id },
       {
         $set: {
           username: req.body.username,
-          password: req.body.password,
+          password: hashPassword,
           age: req.body.age,
           profilePic: req.body.profilePic,
           preferredGenre: req.body.preferredGenre,
