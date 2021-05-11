@@ -9,7 +9,9 @@
         <%- include('../partials/nav') %>
         <h1><%= selected.username %></h1>
         <div class="threeContainer">
-            <img class="profilePic" src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
+            <div class="profilePic">
+                <img src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
+            </div>
             <div class=twoHolder>
                 <h3>All Reviews:</h3>
                 <ul class="showUl">

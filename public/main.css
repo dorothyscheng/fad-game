@@ -184,7 +184,7 @@ input {
 .twoHolder {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
     margin-bottom: 20px;
 }
 .showDes {
@@ -207,9 +207,12 @@ input {
 }
 
 .profilePic {
+    width: 30%;
+    padding-right: 20px;
+}
+.profilePic img {
     width: 100%;
-    max-width: 300px;
-    max-height: 300px;
+    border-radius: 50%;
 }
 /* --------------------------------SHOW END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
