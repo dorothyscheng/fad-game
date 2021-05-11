@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <title>User Login</title>
+  </head>
+  <body>
+    <main>
+      <%- include('../partials/nav') %>
+      <div class="threeContainer">
+        <div class="formHolder">
+          <h1>User Login</h1>
+          <form action="/users/login" method="POST">
+            <div>
+              <label for="username" class="list-title">Username:</label>
+              <input type="text" name="username" />
+            </div>
+            <div>
+              <label for="password" class="list-title">Password: </label>
+              <input type="text" name="password" />
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%- include('../partials/footer') %>
+    </main>
+  </body>
+</html>

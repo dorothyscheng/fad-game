@@ -2,8 +2,26 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/index');
 const methodOverride = require('method-override');
+const bcrypt = require('bcrypt');
 
 router.use(methodOverride('_method'));
+
+router.get('/login', (req, res) => {
+  res.render('users/user-login');
+});
+
+router.post('/login', async (req, res) => {
+  const user = await db.User.findOne({ username: req.body.username });
+  if (!user) {
+    return res.redirect('/users/new');
+  }
+  const match = await bcrypt.compare(req.body.password, user.password);
+  if (match) {
+    res.redirect(`/users/${user._id}`);
+  } else {
+    res.redirect('/users/login');
+  }
+});
 
 // Index
 router.get('/', async (req, res, error) => {
@@ -13,8 +31,8 @@ router.get('/', async (req, res, error) => {
       users: allUsers,
     });
   } catch (error) {
-    next(error)
-  };
+    next(error);
+  }
 });
 // New
 router.get('/new', (req, res) => {
@@ -23,13 +41,17 @@ router.get('/new', (req, res) => {
 // Post
 router.post('/', async (req, res, next) => {
   try {
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
     if (!req.body.profilePic) {
       delete req.body.profilePic;
-    };
-    await db.User.create(req.body);
+    }
+    await db.User.create({
+      username: req.body.username,
+      password: hashPassword,
+    });
     res.redirect('/users');
   } catch (error) {
-    error.statusCode=400;
+    error.statusCode = 400;
     next(error);
   }
 });
@@ -44,7 +66,7 @@ router.get('/:id', async (req, res, next) => {
       selected: selected,
     });
   } catch (error) {
-    error.statusCode=404;
+    error.statusCode = 404;
     next(error);
   }
 });
@@ -58,7 +80,7 @@ router.get('/:id/edit', async (req, res, next) => {
       selected: selected,
     });
   } catch (error) {
-    error.statusCode=404;
+    error.statusCode = 404;
     next(error);
   }
 });
@@ -80,7 +102,7 @@ router.put('/:id', async (req, res, next) => {
     res.redirect(`/users/${req.params.id}`);
   } catch (error) {
     next(error);
-  };
+  }
 });
 // Destroy
 router.delete('/:id', async (req, res, next) => {
@@ -90,7 +112,7 @@ router.delete('/:id', async (req, res, next) => {
     res.redirect('/users');
   } catch (error) {
     next(error);
-  };
+  }
 });
 
 module.exports = router;
