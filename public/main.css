@@ -1,19 +1,24 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
 }
 body {
     background-color: rgb(226, 226, 226);
     margin: 0;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
 }
 /* -------------------------NAV CSS--------------- */
-.nav {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
+nav {
+    width: 100%;
+    padding: 15px 0 15px 0;
     background-color: rgb(167, 167, 167);
+}
+.nav {
+    display: flex;
+    justify-content: space-evenly;
 }
 .nav li {
     display: inline;
@@ -22,6 +27,7 @@ body {
     text-decoration: none;
     font-size: 18px;
     color: black;
+    transition: color .2s ease-in-out;
 }
 .nav a:hover {
     color: white;
@@ -38,7 +44,9 @@ footer {
 }
 /* -------------------------FOOTER END--------------- */
 main {
-    width: 800px;
+    width: 80%;
+    max-width: 1500px;
+    min-width: 800px;
     box-sizing: border-box;
 }
 
@@ -46,7 +54,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 200px;
+    height: 300px;
 }
 
 .threeContainer {
@@ -58,7 +66,7 @@ main {
 .threeSet {
     width: 31%;
     min-width: 200px;
-    min-height: 200px; 
+    min-height: 300px; 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -72,26 +80,26 @@ main {
 }
 
 .circleContainer {
-    margin: 10px 0 10px 0;
+    margin: 15px 0 15px 0;
     display: flex;
     justify-content: space-between;
 }
 .round {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     background-color: rgb(201, 201, 201);
 }
 
 .halfSet {
     margin-bottom: 20px;
     width: 45%;
-    height: 200px;
+    height: 300px;
     background-color: rgb(167, 167, 167);
 }
 .fourthSet {
     width: 25%;
-    height: 200px;
+    height: 300px;
     background-color: rgb(167, 167, 167);
 }
 
@@ -127,14 +135,27 @@ main {
 .picHolder img {
     width: 100%;
 }
+.editDelete {
+    display: flex;
+    justify-content: flex-end;
+}
 .editDelete button {
     background: none;
     border-radius: 5px;
+    margin-left: 10px;
     padding: 3px;
 }
 .editDelete button:hover{ 
     background: red;
     color: white;
+}
+.editDelete a {
+    padding: 2px 5px 2px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.editDelete a:hover {
+    background-color: black;
 }
 .indexInfo {
     width: 75%;
@@ -146,6 +167,7 @@ main {
 .indexInfo a{
     text-decoration: none;
     color: black;
+    transition: text-shadow .2s ease-in-out;
 }
 .indexInfo a:hover{
     color: white;
@@ -216,7 +238,7 @@ input {
 }
 /* --------------------------------SHOW END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
-@media screen and (max-width: 750px){
+@media screen and (max-width: 650px){
     #indexContainer {
         display: flex;
         flex-direction: column;
