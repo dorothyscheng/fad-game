@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const gameSchema = new mongoose.Schema({
   name: { type: String, required: true, minLength: 1 },
-  description: String,
+  description: {type: String, default: 'No description provided'},
   numPlayers: {
     min: { type: Number, min: 1 },
     max: Number,
@@ -13,7 +13,7 @@ const gameSchema = new mongoose.Schema({
     max: Number,
   },
   designer: [String],
-  image: String,
+  image: {type: String, default: 'https://www.jing.fm/clipimg/full/19-195367_board-game-clip-art-black-and-white-board.png'},
   genre: [String],
   reviews: [
     {

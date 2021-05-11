@@ -10,9 +10,9 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   age: Number,
-  profilePic: String,
+  profilePic: {type: String, default: 'https://icon-library.com/images/generic-user-icon/generic-user-icon-19.jpg'},
   preferredGenre: String,
-  isAdmin: Boolean,
+  isAdmin: {type: Boolean, default: false},
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,

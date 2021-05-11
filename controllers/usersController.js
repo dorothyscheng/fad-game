@@ -23,6 +23,9 @@ router.get('/new', (req, res) => {
 // Post
 router.post('/', async (req, res, next) => {
   try {
+    if (!req.body.profilePic) {
+      delete req.body.profilePic;
+    };
     await db.User.create(req.body);
     res.redirect('/users');
   } catch (error) {

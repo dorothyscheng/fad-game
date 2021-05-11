@@ -34,6 +34,12 @@ router.post('/', async (req, res,next) => {
     };
     const designersArr = req.body.designer.split(', ');
     const genreArr = req.body.genre.split(', ');
+    if (!req.body.description) {
+      delete req.body.description; 
+    };
+    if (!req.body.image) {
+      delete req.body.image;
+    };
     await db.Game.create({
       name: req.body.name,
       description: req.body.description,
