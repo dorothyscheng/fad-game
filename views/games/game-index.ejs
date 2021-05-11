@@ -14,7 +14,9 @@
                 <ul class="indexUl">
                 <% games.forEach(element=>{ %>
                 <li id="indexList">
-                    <div class="picHolder">game box</div>
+                    <div class="picHolder">
+                        <img src="<%= element.image%>">
+                    </div>
                     <div class=indexInfo>
                         <a class="title" href="/games/<%= element._id %>"><%= element.name %></a>
                         <p><%=element.description%></p>

@@ -7,7 +7,6 @@
 <body>
     <main>
       <%- include('../partials/nav') %>
-        <h1>All Users</h1>
         <section id="indexContainer">
             <div class="adLong">
                 ad
@@ -15,7 +14,9 @@
                 <ul class="indexUl">
                 <% users.forEach(element=>{ %>
                 <li id="indexList">
-                    <div class="picHolder">user profile pic</div>
+                    <div class="picHolder">
+                        <img src="<%=element.profilePic%>">
+                    </div>
                     <div class=indexInfo>
                         <a class="title" href="/users/<%= element._id %>"><%= element.username %></a>
                         <div class="editDelete">

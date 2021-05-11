@@ -8,21 +8,29 @@
     <main>
         <%- include('../partials/nav') %>
         <h1><%= selected.name %></h1>
-        <img src="<%= selected.image %>" alt="<%= selected.name %> game box">
-        <ul>
-            <li><span class="list-title">Description:</span> <%= selected.description %></li>
-            <li><span class="list-title">Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
-            <li><span class="list-title">Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
-            <li><span class="list-title">Age Rating:</span> <%= selected.ageRating %>+</li>
-            <li><span class="list-title">Designers:</span> <%= selected.designer %></li>
-            <li><span class="list-title">Average User Rating:</span><%= avgRating %></li>
-            <li><span class="list-title">Genres:</span> <%= selected.genre.join(', ') %></li>
-        </ul>
-        <span class="list-title">All Reviews for <%= selected.name %>:</span>
-        <ul>
+        <div class="threeContainer">
+            <div class="twoHolder">
+                <img class="showImg" src="<%= selected.image %>" alt="<%= selected.name %> game box">
+                <ul class="showUl">
+                    <li><span class="list-title">Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
+                    <li><span class="list-title">Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
+                    <li><span class="list-title">Age Rating:</span> <%= selected.ageRating %>+</li>
+                    <li><span class="list-title">Designers:</span> <%= selected.designer %></li>
+                    <li><span class="list-title">Average User Rating:</span><%= avgRating %></li>
+                    <li><span class="list-title">Genres:</span> <%= selected.genre.join(', ') %></li>
+                </ul>
+                
+            </div>
+            <p class="showDes">Description: <%= selected.description %></p>
+                
+        </div>
+       
+        <h2>All Reviews for <%= selected.name %>:</h2>
+        <ul class="showUl">
                 <% selected.reviews.forEach(element => { %>
-                    <li>
-                        <%= element.rating %>
+                    <li class="reviewLi">
+                        <%= element.rating %> Stars
+                        </br>
                         <%= element.review %>
                     </li>
                 <% }); %>

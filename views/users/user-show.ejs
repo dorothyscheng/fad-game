@@ -8,22 +8,30 @@
     <main>
         <%- include('../partials/nav') %>
         <h1><%= selected.username %></h1>
-        <img src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
-        <span class="list-title">All Reviews:</span>
-        <ul>
-                <% selected.reviews.forEach(element => { %>
-                    <li>
-                        <a href="/games/<%= element.game._id %>"><%= element.game.name %></a>
-                        <%= element.rating %>
-                        <%= element.review %>
-                        <a href="/reviews/<%= element._id %>/edit">Edit Review</a>
-                        <form action="/reviews/<%= element._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Delete Review</button>
-                        </form>
-                    </li>
-                <% }); %>
-        </ul>
+        <div class="threeContainer">
+            <img class="profilePic" src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
+            <div class=twoHolder>
+                <h3>All Reviews:</h3>
+                <ul class="showUl">
+                        <% selected.reviews.forEach(element => { %>
+                            <li>
+                                <ul class="showUl">
+                                    <li><a href="/games/<%= element.game._id %>"><%= element.game.name %></a></li>
+                                    <li><%= element.rating %></li>
+                                    <li><%= element.review %></li>
+                                    <a href="/reviews/<%= element._id %>/edit">Edit Review</a>
+                                    <form action="/reviews/<%= element._id %>?_method=DELETE" method="POST">
+                                        <button type="submit">Delete Review</button>
+                                    </form>
+                                    </br>
+                                </ul>
+                            </li>
+                        <% }); %>
+                </ul>
+            </div>
+        </div>
         <%- include('../partials/footer') %>
     </main>
 </body>
 </html>
+
