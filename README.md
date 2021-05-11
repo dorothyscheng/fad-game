@@ -6,51 +6,6 @@ FAD-Games is an user interactive app that allows users to search, learn about ga
 
 
 
-# FAD-Games Tree structure
-.
-├── README.md
-├── controllers
-│   ├── gamesController.js
-│   ├── reviewsController.js
-│   └── usersController.js
-├── models
-│   ├── Game.js
-│   ├── Review.js
-│   ├── User.js
-│   ├── index.js
-│   └── tempGames.js
-├── package-lock.json
-├── package.json
-├── public
-│   └── main.css
-├── server.js
-├── serverP.js
-└── views
-    ├── games
-    │   ├── game-edit.ejs
-    │   ├── game-index.ejs
-    │   ├── game-new.ejs
-    │   ├── game-show.ejs
-    │   └── game.showP.ejs
-    ├── home.ejs
-    ├── partials
-    │   ├── footer.ejs
-    │   ├── head.ejs
-    │   └── nav.ejs
-    ├── reviews
-    │   ├── review-edit.ejs
-    │   └── review-new.ejs
-    └── users
-        ├── practiceNewUser.ejs
-        ├── user-edit.ejs
-        ├── user-index.ejs
-        ├── user-new.ejs
-        └── user-show.ejs
-
-8 directories, 30 files
-
-
-
 [Link to project hosted on Heroku]()
 
 ## Technologies Used
@@ -350,4 +305,50 @@ We will hold 1:1s throughout the week. We will also do mini lessons on certain t
 * **Problem Solving**: Are you able to defend why you implemented your solution in a certain way? Can you demonstrate that you thought through alternative implementations? *(Note that this part of your feedback evaluation will take place during your one-on-one code review with your instructors, after you've completed the project.)*
 
 You'll be receiving written feedback from your instructors as well has having a one-on-one meeting to go over the feedback and your code. Each of the criteria above will be evaluated as one of **incomplete**, **does not meet expectations**, **meets expectations**, or **exceeds expectations**.
+
+
+
+# FAD-Games Tree structure
+.
+├── README.md
+├── controllers
+│   ├── gamesController.js
+│   ├── reviewsController.js
+│   └── usersController.js
+├── models
+│   ├── Game.js
+│   ├── Review.js
+│   ├── User.js
+│   ├── index.js
+│   └── tempGames.js
+├── package-lock.json
+├── package.json
+├── public
+│   └── main.css
+├── server.js
+├── serverP.js
+└── views
+    ├── games
+    │   ├── game-edit.ejs
+    │   ├── game-index.ejs
+    │   ├── game-new.ejs
+    │   ├── game-show.ejs
+    │   └── game.showP.ejs
+    ├── home.ejs
+    ├── partials
+    │   ├── footer.ejs
+    │   ├── head.ejs
+    │   └── nav.ejs
+    ├── reviews
+    │   ├── review-edit.ejs
+    │   └── review-new.ejs
+    └── users
+        ├── practiceNewUser.ejs
+        ├── user-edit.ejs
+        ├── user-index.ejs
+        ├── user-new.ejs
+        └── user-show.ejs
+
+8 directories, 30 files
+
 
