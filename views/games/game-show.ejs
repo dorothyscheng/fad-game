@@ -15,7 +15,7 @@
             <li><span class="list-title">Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
             <li><span class="list-title">Age Rating:</span> <%= selected.ageRating %>+</li>
             <li><span class="list-title">Designers:</span> <%= selected.designer %></li>
-            <li><span class="list-title">Average User Rating:</span>Placeholder for Ratings</li>
+            <li><span class="list-title">Average User Rating:</span><%= avgRating %></li>
             <li><span class="list-title">Genres:</span> <%= selected.genre.join(', ') %></li>
         </ul>
         <span class="list-title">All Reviews for <%= selected.name %>:</span>

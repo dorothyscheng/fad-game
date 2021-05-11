@@ -28,8 +28,6 @@ router.post('/', async (req, res) => {
   };
   const designersArr = req.body.designer.split(', ');
   const genreArr = req.body.genre.split(', ');
-  // const userRatings = [];
-  //userRatings.push(req.body.userRating);
   await db.Game.create({
     name: req.body.name,
     description: req.body.description,
@@ -38,7 +36,6 @@ router.post('/', async (req, res) => {
     playTime: playTime,
     designer: designersArr,
     image: req.body.image,
-    //userRatings: userRatings,
     genre: genreArr,
   });
   res.redirect('/games');
@@ -50,23 +47,21 @@ router.get('/:id', async (req, res) => {
       path: 'reviews',
         populate: {path: 'game'}
     });
-  //const averageRating =
-    //selectedGame.userRatings.reduce((acc, curr) => acc + curr) /
-    //selectedGame.userRatings.length;
+  let ratingSum=0;
+  selectedGame.reviews.forEach(element=>{
+    ratingSum+=element.rating;
+  });
+  const averageRating=ratingSum/selectedGame.reviews.length;
   res.render('games/game-show', {
     selected: selectedGame,
-    //avgRating: averageRating.toFixed(2),
+    avgRating: averageRating.toFixed(2),
   });
 });
 // EDIT
 router.get('/:id/edit', async (req,res) => {
   const selectedGame = await db.Game.findById({ _id: req.params.id });
-  // const averageRating =
-  //   selectedGame.userRatings.reduce((acc, curr) => acc + curr) /
-  //   selectedGame.userRatings.length;
   res.render('games/game-edit', {
     selected: selectedGame,
-    //avgRating: parseFloat(averageRating.toFixed(2)),
   });
 })
 // PUT
@@ -81,8 +76,6 @@ router.put('/:id', async (req,res) => {
   };
   const designersArr = req.body.designer.split(', ');
   const genreArr = req.body.genre.split(', ');
-  //const userRatings = [];
-  //userRatings.push(req.body.userRating);
   await db.Game.findByIdAndUpdate(
     {_id: req.params.id},
     {
@@ -94,7 +87,6 @@ router.put('/:id', async (req,res) => {
         playTime: playTime,
         designer: designersArr,
         image: req.body.image,
-        //userRatings: userRatings,
         genre: genreArr,
       }
   });
