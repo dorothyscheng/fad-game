@@ -46,7 +46,7 @@ router.post('/', async (req, res,next) => {
     });
     res.redirect('/games');
   } catch(error) {
-    error.statusCode=400; //Bad request (user input)
+    error.statusCode=400;
     next(error);
   }
 });
@@ -68,7 +68,7 @@ router.get('/:id', async (req, res,next) => {
       avgRating: averageRating.toFixed(2),
     });
   } catch(error) {
-    error.statusCode=404; //Not Found
+    error.statusCode=404;
     next(error);
   }
 });
@@ -113,7 +113,6 @@ router.put('/:id', async (req,res, next) => {
     });
     res.redirect(`/games/${req.params.id}`);
   } catch (error) {
-    error.statusCode=400;
     next(error);
   };
 })
@@ -123,7 +122,6 @@ router.delete('/:id', async (req,res)=>{
     await db.Game.findByIdAndDelete({_id: req.params.id})
     res.redirect('/games');
   } catch (error) {
-    error.statusCode=500;
     next(error);
   };
 })
