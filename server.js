@@ -31,6 +31,21 @@ app.use('/reviews',reviewsController);
 app.get('/', (req,res) => {
     res.render('home.ejs');
 });
+// Error handler
+app.use((err,req,res,next)=>{
+    let message="Something went wrong.";
+    if (!err.statusCode) err.statusCode=500;
+    if (err.statusCode===400) {
+        res.status(400);
+        message = "Looks like you missed a required field. Try again."
+    } else if (err.statusCode===404) {
+        res.status(404);
+        message = "That page doesn't exist."
+    };
+    res.render('error',{
+        message: message,
+    })
+})
 ////////////////////////////////////////////
 app.listen(PORT, () => {
     console.log(`Server Active: http://localhost:${PORT}`);
