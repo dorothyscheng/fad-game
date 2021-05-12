@@ -1,6 +1,6 @@
 const stars=document.querySelectorAll('.fa-star');
 
-function colorStars(e) {
+function newReviewStars(e) {
     for (let i=0; i<stars.length; i++) {
         const currentStar=document.getElementById(`star${i}`);
         currentStar.classList.remove('filled');
@@ -15,7 +15,6 @@ function colorStars(e) {
     const ratingInput = document.getElementById('rating');
     ratingInput.setAttribute('value',selectedIndex+1);
 };
-
 stars.forEach(element=>{
-    element.addEventListener('click',colorStars);
+    element.addEventListener('click',newReviewStars);
 })
