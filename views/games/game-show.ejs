@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
+    <script src="/scripts/user-show.js" defer></script>
     <title><%= selected.name %></title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     <li><span class="list-title">Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
                     <li><span class="list-title">Age Rating:</span> <%= selected.ageRating %>+</li>
                     <li><span class="list-title">Designers:</span> <%= selected.designer %></li>
-                    <li><span class="list-title">Average User Rating:</span><%= avgRating %></li>
+                    <li><span class="list-title">Average User Rating: </span><%= avgRating %></li>
                     <li><span class="list-title">Genres:</span> <%= selected.genre.join(', ') %></li>
                 </ul>
                 
@@ -27,10 +28,21 @@
        
         <h2>All Reviews for <%= selected.name %>:</h2>
         <ul class="showUl">
-                <% selected.reviews.forEach(element => { %>
-                    <li class="reviewLi">
-                        <%= element.rating %> Stars
-                        </br>
+                <% selected.reviews.forEach((element, index) => { %>
+                    <li class="reviewLi game-link">
+                        <div>
+                            <input id="rating<%=index%>" class="rating" type="number" value="<%= element.rating %>">
+                            <i id="star0<%=index%>" class="fas fa-star"></i>
+                            <i id="star1<%=index%>" class="fas fa-star"></i>
+                            <i id="star2<%=index%>" class="fas fa-star"></i>
+                            <i id="star3<%=index%>" class="fas fa-star"></i>
+                            <i id="star4<%=index%>" class="fas fa-star"></i>
+                            <i id="star5<%=index%>" class="fas fa-star"></i>
+                            <i id="star6<%=index%>" class="fas fa-star"></i>
+                            <i id="star7<%=index%>" class="fas fa-star"></i>
+                            <i id="star8<%=index%>" class="fas fa-star"></i>
+                            <i id="star9<%=index%>" class="fas fa-star"></i>
+                        </div>
                         <%= element.review %>
                     </li>
                 <% }); %>

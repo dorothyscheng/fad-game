@@ -217,10 +217,10 @@ input {
     cursor: pointer;
 }
 .review-star:hover {
-    color: yellow;
+    color: gold;
 }
 .filled {
-    color: yellow;
+    color: gold;
 }
 .rating {
     display: none;
