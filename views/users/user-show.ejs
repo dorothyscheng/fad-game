@@ -8,9 +8,9 @@
 <body>
     <%- include('../partials/nav') %>
     <main>
-        <h1><%= selected.username %></h1>
         <div class="threeContainer">
             <div class="profilePic">
+                <h1><%= selected.username %></h1>
                 <img src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
             </div>
             <div class=twoHolder>
@@ -34,10 +34,12 @@
                                         <i id="star9<%=index%>" class="fas fa-star"></i>
                                     </div></li>
                                     <li><%= element.review %></li>
-                                    <a href="/reviews/<%= element._id %>/edit">Edit Review</a>
-                                    <form action="/reviews/<%= element._id %>?_method=DELETE" method="POST">
-                                        <button type="submit">Delete Review</button>
-                                    </form>
+                                    <div class="editDelete">
+                                        <a href="/reviews/<%= element._id %>/edit">Edit Review</a>
+                                        <form action="/reviews/<%= element._id %>?_method=DELETE" method="POST">
+                                            <button type="submit">Delete Review</button>
+                                        </form>
+                                    </div>
                                     </br>
                                 </ul>
                             </li>
