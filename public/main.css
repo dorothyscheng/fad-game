@@ -44,7 +44,7 @@ footer {
 }
 /* -------------------------FOOTER END--------------- */
 main {
-    width: 80%;
+    width: 90%;
     max-width: 1500px;
     min-width: 900px;
 }
@@ -121,6 +121,7 @@ main {
 .indexUl {
     list-style-type: none;
     width: 70%;
+    margin: 20px 40px 20px 40px;
 }
 .title {
     font-size: 20px;
