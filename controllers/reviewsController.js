@@ -88,8 +88,6 @@ router.put('/:id', requireLogin, async (req,res,next) =>{
 router.delete('/:id', requireLogin, async (req,res, next)=>{
     try {
         const review = await db.Review.findById({_id: req.params.id}).populate('user');
-
-
         if (req.session.isAdmin === true || req.session.currentUser === review.user.username ){
             const user = await db.User.findOne({reviews: req.params.id});
             const game = await db.Game.findOne({reviews: req.params.id});
@@ -99,16 +97,11 @@ router.delete('/:id', requireLogin, async (req,res, next)=>{
             game.reviews.remove(req.params.id);
             await game.save();
             res.redirect(`/users/${user._id}`);
-
-
-
         } else { 
             const error = new Error;
             error.statusCode = 401; 
             next(error);
-        }
-
-        
+        } 
     } catch (error) {
         next(error);
     };

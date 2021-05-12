@@ -103,6 +103,8 @@ router.get('/:id/edit', requireLogin, async (req,res, next) => {
       const selectedGame = await db.Game.findById({ _id: req.params.id });
       res.render('games/game-edit', {
         selected: selectedGame,
+        accessUrl: req.accessUrl,
+        accessText: req.accessText,
       });
     } else { 
       const error = new Error;
@@ -153,6 +155,13 @@ router.delete('/:id', requireLogin, async (req,res, next)=>{
       req.session.isAdmin === true
     ){
       await db.Game.findByIdAndDelete({_id: req.params.id});
+      const reviews = await db.Review.find({game: req.params.id});
+      reviews.forEach( async element => {
+        const currentUser = await db.User.findById({_id: element.user});
+        currentUser.reviews.remove(req.params.id);
+        await currentUser.save();
+        await element.delete();
+      });
       res.redirect('/games');
     } else { 
       const error = new Error;

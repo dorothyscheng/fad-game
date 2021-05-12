@@ -70,8 +70,12 @@ main {
 #mainFeatured {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   height: 300px;
+}
+#mainFeatured h1 {
+  font-size: 50px;
+  margin-left: 20px;
 }
 
 .threeContainer {
@@ -308,6 +312,20 @@ input {
 /* --------------------------------SHOW END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
 @media screen and (max-width: 650px) {
+  #mainFeatured {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+  #mainFeatured h1 {
+    font-size: 30px;
+  }
+  #mainFeatured img {
+    width: 15%;
+  }
+
   #indexContainer {
     display: flex;
     flex-direction: column;

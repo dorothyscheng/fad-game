@@ -49,9 +49,9 @@ app.use('/reviews', reviewsController);
 //     console.log(allGames);
 // });
 
-// Update a user's status to admin
+// // Update a user's status to admin
 // db.User.findOneAndUpdate(
-//     {username: 'Dorothy'},
+//     {username: 'F'},
 //     {$set:{isAdmin: true}},
 //     (err,updatedUser)=>console.log(updatedUser)
 // );
