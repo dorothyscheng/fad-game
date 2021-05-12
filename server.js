@@ -23,6 +23,7 @@ app.use(
 
 /////////////////CSS
 const path = require('path');
+const { ESRCH } = require('constants');
 app.use(express.static(path.join(__dirname, 'public')));
 
 ////////////////////////////////////////////
@@ -48,18 +49,16 @@ app.use('/reviews', reviewsController);
 ////////////////////////////////////////////ROUTES
 // Home
 app.get('/', (req, res) => {
-  const accessUrl = '/users/logout';
-  const accessText = 'Logout';
-  if (!req.session.currentUser) {
-    accessUrl = '/users/login';
-    accessText = 'Login';
-    }
-    res.render('home.ejs', {
-      accessUrl: accessUrl,
-      accessText: accessText,
-    });
-//   console.log(accessUrl);
-//   console.log(accessText);
+  let accessUrl = '/users/logout';
+  let accessText = 'Logout';
+  if (! req.session.currentUser) {
+    accessUrl='/users/login';
+    accessText='Login';
+  };
+  res.render('home.ejs', {
+    accessUrl: accessUrl,
+    accessText: accessText,
+  });
 });
 // Catch-all
 app.get('*', (req, res, next) => {
