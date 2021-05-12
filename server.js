@@ -23,8 +23,18 @@ app.use(
 
 /////////////////CSS
 const path = require('path');
-const { ESRCH } = require('constants');
 app.use(express.static(path.join(__dirname, 'public')));
+// Check if user is logged in and update login/logout link in nav partial
+function checkAccessLink(req,res,next) {
+  req.accessUrl = '/users/logout';
+  req.accessText = 'Logout';
+  if (! req.session.currentUser) {
+    req.accessUrl='/users/login'
+    req.accessText='Login';
+  };
+  next();
+};
+app.use(checkAccessLink);
 
 ////////////////////////////////////////////
 
@@ -46,18 +56,13 @@ app.use('/reviews', reviewsController);
 //     (err,updatedUser)=>console.log(updatedUser)
 // );
 
+
 ////////////////////////////////////////////ROUTES
 // Home
 app.get('/', (req, res) => {
-  let accessUrl = '/users/logout';
-  let accessText = 'Logout';
-  if (! req.session.currentUser) {
-    accessUrl='/users/login';
-    accessText='Login';
-  };
   res.render('home.ejs', {
-    accessUrl: accessUrl,
-    accessText: accessText,
+    accessUrl: req.accessUrl,
+    accessText: req.accessText,
   });
 });
 // Catch-all
@@ -81,7 +86,9 @@ app.use((err, req, res, next) => {
     message = 'Not Authorized';
   }
   res.render('error', {
-    message: message,
+    message: err.toString(),
+    accessUrl: req.accessUrl,
+    accessText: req.accessText,
   });
 });
 ////////////////////////////////////////////

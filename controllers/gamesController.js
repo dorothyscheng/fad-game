@@ -20,6 +20,8 @@ router.get('/', async (req, res, next) => {
     const allGames = await db.Game.find();
     res.render('games/game-index', {
       games: allGames,
+      accessUrl: req.accessUrl,
+      accessText: req.accessText,
     });
   } catch (error) {
     error.statusCode=500;
@@ -28,7 +30,10 @@ router.get('/', async (req, res, next) => {
 });
 //NEW
 router.get('/new', (req, res) => {
-  res.render('games/game-new');
+  res.render('games/game-new',{
+    accessUrl: req.accessUrl,
+    accessText: req.accessText,
+  });
 });
 //POST
 router.post('/', requireLogin, async (req, res,next) => {
@@ -81,6 +86,8 @@ router.get('/:id', async (req, res,next) => {
     res.render('games/game-show', {
       selected: selectedGame,
       avgRating: averageRating.toFixed(2),
+      accessUrl: req.accessUrl,
+      accessText: req.accessText,
     });
   } catch(error) {
     error.statusCode=404;

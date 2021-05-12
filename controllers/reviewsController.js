@@ -20,6 +20,8 @@ router.get('/new', requireLogin, async (req,res)=> {
     res.render('reviews/review-new', {
         username: req.session.currentUser,
         games: allGames,
+        accessUrl: req.accessUrl,
+        accessText: req.accessText,
     });
 });
 // Post
@@ -52,6 +54,8 @@ router.get('/:id/edit', requireLogin, async (req,res, next) => {
         if (req.session.isAdmin === true || req.session.currentUser === selected.user.username ){
             res.render('reviews/review-edit',{
                 selected: selected,
+                accessUrl: req.accessUrl,
+                accessText: req.accessText,
             });
         } else { 
             const error = new Error;

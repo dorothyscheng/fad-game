@@ -8,7 +8,10 @@ router.use(methodOverride('_method'));
 
 /////////login
 router.get('/login', (req, res) => {
-  res.render('users/user-login');
+  res.render('users/user-login',{
+    accessUrl: req.accessUrl,
+    accessText: req.accessText,
+  });
 });
 // Login post
 router.post('/login', async (req, res) => {
@@ -55,6 +58,8 @@ router.get('/', async (req, res, error) => {
     const allUsers = await db.User.find();
     res.render('users/user-index', {
       users: allUsers,
+      accessUrl: req.accessUrl,
+      accessText: req.accessText,
     });
   } catch (error) {
     next(error);
@@ -64,6 +69,8 @@ router.get('/', async (req, res, error) => {
 router.get('/new', (req, res) => {
   res.render('users/user-new',{
     message: req.query.message,
+    accessUrl: req.accessUrl,
+    accessText: req.accessText,
   });
 });
 // Post
@@ -98,6 +105,8 @@ router.get('/:id', async (req, res, next) => {
     });
     res.render('users/user-show', {
       selected: selected,
+      accessUrl: req.accessUrl,
+      accessText: req.accessText,
     });
   } catch (error) {
     error.statusCode = 404;
@@ -113,6 +122,8 @@ router.get('/:id/edit', requireLogin, async (req, res, next) => {
     if (req.session.isAdmin === true || req.session.currentUser === selected.username ){
       res.render('users/user-edit', {
         selected: selected,
+        accessUrl: req.accessUrl,
+        accessText: req.accessText,
       });
     } else { 
       const error = new Error;
