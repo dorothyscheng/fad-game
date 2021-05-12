@@ -49,6 +49,12 @@ app.use('/reviews',reviewsController);
 app.get('/', (req,res) => {
     res.render('home.ejs');
 });
+// Catch-all
+app.get('*',(req,res,next)=>{
+    const error= new Error;
+    error.statusCode=404;
+    next(error);
+})
 // Error handler
 app.use((err,req,res,next)=>{
     let message="Something went wrong.";
