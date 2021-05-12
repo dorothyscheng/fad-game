@@ -10,23 +10,27 @@ router.use(methodOverride('_method'));
 router.get('/login', (req, res) => {
   res.render('users/user-login');
 });
-
+// Login post
 router.post('/login', async (req, res) => {
-  const user = await db.User.findOne({ username: req.body.username });
-  if (!user) {
-    return res.redirect('/users/new');
-  }
-  const match = await bcrypt.compare(req.body.password, user.password);
-  if (match) {
-    if (user.isAdmin) {
-      req.session.isAdmin = true;
+  try {
+    const user = await db.User.findOne({ username: req.body.username });
+    if (!user) {
+      return res.redirect('/users/new');
     }
-    req.session.currentUser = user.username;
-
-    res.redirect(`/users/${user._id}`);
-  } else {
-    res.redirect('/users/login');
-  }
+    const match = await bcrypt.compare(req.body.password, user.password);
+    if (match) {
+      if (user.isAdmin) {
+        req.session.isAdmin = true;
+      }
+      req.session.currentUser = user.username;
+  
+      res.redirect(`/users/${user._id}`);
+    } else {
+      res.redirect('/users/login');
+    }
+  } catch (error) {
+    next(error);
+  };
 });
 //////login redirect
 function requireLogin(req,res,next) {
@@ -36,13 +40,15 @@ function requireLogin(req,res,next) {
       next();
   };
 };
-
 /////////log out
 router.get('/logout', async (req, res) => {
-  await req.session.destroy();
-  res.redirect('/');
+  try {
+    await req.session.destroy();
+    res.redirect('/');
+  } catch (error) {
+    next(error);
+  };
 });
-
 // Index
 router.get('/', async (req, res, error) => {
   try {
