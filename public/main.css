@@ -140,6 +140,7 @@ main {
 }
 .holder {
     width: 40%;
+    margin-top: 10px;
     min-width: 150px;
     background: url("https://picsum.photos/500/500")
 }
@@ -215,7 +216,7 @@ input {
     color: gray;
     cursor: pointer;
 }
-.fa-star:hover {
+.review-star:hover {
     color: yellow;
 }
 .filled {
