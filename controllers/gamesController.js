@@ -5,6 +5,15 @@ const methodOverride = require('method-override');
 
 router.use(methodOverride('_method'));
 
+//////login redirect
+function requireLogin(req,res,next) {
+  if (!req.session.currentUser) {
+      res.redirect('/users/login');
+  } else {
+      next();
+  };
+};
+
 // INDEX
 router.get('/', async (req, res, next) => {
   try {
@@ -22,7 +31,7 @@ router.get('/new', (req, res) => {
   res.render('games/game-new');
 });
 //POST
-router.post('/', async (req, res,next) => {
+router.post('/', requireLogin, async (req, res,next) => {
   try {
     const player = {
       min: req.body.minPlayers,
@@ -79,14 +88,22 @@ router.get('/:id', async (req, res,next) => {
   }
 });
 // EDIT
-router.get('/:id/edit', async (req,res, next) => {
+router.get('/:id/edit', requireLogin, async (req,res, next) => {
   try {
-    const selectedGame = await db.Game.findById({ _id: req.params.id });
-    res.render('games/game-edit', {
-      selected: selectedGame,
-    });
+    if (
+      req.session.isAdmin === true
+    ){
+      const selectedGame = await db.Game.findById({ _id: req.params.id });
+      res.render('games/game-edit', {
+        selected: selectedGame,
+      });
+    } else { 
+      const error = new Error;
+      error.statusCode = 401; 
+      next(error);
+    }
   } catch (error) {
-    error.statusCode=404;
+    error.statusCode = 404;
     next(error);
   };
 })
@@ -123,11 +140,20 @@ router.put('/:id', async (req,res, next) => {
   };
 })
 // DESTROY
-router.delete('/:id', async (req,res)=>{
+router.delete('/:id', requireLogin, async (req,res, next)=>{
   try {
-    await db.Game.findByIdAndDelete({_id: req.params.id})
-    res.redirect('/games');
+    if (
+      req.session.isAdmin === true
+    ){
+      await db.Game.findByIdAndDelete({_id: req.params.id});
+      res.redirect('/games');
+    } else { 
+      const error = new Error;
+      error.statusCode = 401; 
+      next(error);
+    }
   } catch (error) {
+    error.statusCode = 404;
     next(error);
   };
 })

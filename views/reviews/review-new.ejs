@@ -10,11 +10,8 @@
       <div class="threeContainer">
         <div class=formHolder>
           <h1>New Review</h1>
+          <h3>By <%= username %></h3>
           <form action="/reviews" method="POST">
-            <div>
-                <label for="username" class="list-title">Username:</label>
-                <input type="text" name="username">
-            </div>
             <div>
                 <label for="gameName" class="list-title">Game Name: </label>
                 <input type="text" name="gameName">

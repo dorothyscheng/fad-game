@@ -91,19 +91,19 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 // Edit
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id/edit', requireLogin, async (req, res, next) => {
   try {
     const selected = await db.User.findById({
       _id: req.params.id,
     });
-    if (
-      req.session.isAdmin === true || 
-      req.session.currentUser === selected.username 
-    ){
+    if (req.session.isAdmin === true || req.session.currentUser === selected.username ){
       res.render('users/user-edit', {
         selected: selected,
-      }
-    );
+      });
+    } else { 
+      const error = new Error;
+      error.statusCode = 401; 
+      next(error);
     }
   } catch (error) {
     error.statusCode = 404;
@@ -135,16 +135,18 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
     const user = await db.User.findById({_id: req.params.id});
-    if (
-      req.session.isAdmin === true || 
-      req.session.currentUser === user.username 
-    ){
+    if (req.session.isAdmin === true || req.session.currentUser === user.username )
+    {
       await db.User.findByIdAndDelete({ _id: req.params.id });
       await db.Review.deleteMany({ user: req.params.id });
       res.redirect('/users');
-    }; 
+    } else { 
+      const error = new Error;
+      error.statusCode = 401; 
+      next(error);
+    };
   } catch (error) {
-    error.statusCode = 401;
+    error.statusCode = 404;
     next(error);
   }
 });
