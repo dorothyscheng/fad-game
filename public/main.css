@@ -1,351 +1,365 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
 }
 body {
-    background-color: rgb(243, 243, 243);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  background-color: rgb(243, 243, 243);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 /* -------------------------NAV CSS--------------- */
 nav {
-    width: 100%;
-    padding: 15px 0 15px 0;
-    background-color: rgb(167, 167, 167);
+  width: 100%;
+  padding: 15px 0 15px 0;
+  background-color: rgb(167, 167, 167);
 }
 .nav {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 .nav li {
-    display: inline;
+  display: inline;
 }
 .nav a {
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    transition: color .2s ease-in-out;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  transition: color 0.2s ease-in-out;
 }
 .nav a:hover {
-    color: white;
+  color: white;
 }
 /* -------------------------NAV END--------------- */
 /* -------------------------FOOTER CSS--------------- */
 footer {
-    height: 30px;
-    width: 100%;
-    padding-top: 20px;
-    margin-top: 20px;
-    text-align: center;
-    background-color: rgb(167, 167, 167);
+  /* height: 30px; */
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 20px;
+  text-align: center;
+  background-color: rgb(167, 167, 167);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.logo {
+  max-width: 100px;
+}
+.contact-ul {
+list-style: none;
+}
+.social-media {
+    display: flex;
+    justify-content: space-between;
+    min-width:118px;
+
 }
 /* -------------------------FOOTER END--------------- */
 main {
-    width: 90%;
-    max-width: 1500px;
-    min-width: 900px;
+  width: 90%;
+  max-width: 1500px;
+  min-width: 900px;
 }
 
 #mainFeatured {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 300px;
 }
 
 .threeContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-top: 10px;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 100%;
 }
 .threeSet {
-    width: 31%;
-    min-width: 200px;
-    min-height: 300px; 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
-    background-color: rgb(167, 167, 167);
+  width: 31%;
+  min-width: 200px;
+  min-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+  background-color: rgb(167, 167, 167);
 }
 .fourPanel {
-    width: 40%;
-    height: 40%;
-    background-color: rgb(201, 201, 201);
+  width: 40%;
+  height: 40%;
+  background-color: rgb(201, 201, 201);
 }
 
 .circleContainer {
-    margin: 15px 0 15px 0;
-    display: flex;
-    justify-content: space-between;
+  margin: 15px 0 15px 0;
+  display: flex;
+  justify-content: space-between;
 }
 .round {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    background-color: rgb(201, 201, 201);
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(201, 201, 201);
 }
 
 .halfSet {
-    margin-bottom: 20px;
-    width: 45%;
-    height: 300px;
-    background-color: rgb(167, 167, 167);
+  margin-bottom: 20px;
+  width: 45%;
+  height: 300px;
+  background-color: rgb(167, 167, 167);
 }
 .fourthSet {
-    width: 25%;
-    height: 300px;
-    background-color: rgb(167, 167, 167);
+  width: 25%;
+  height: 300px;
+  background-color: rgb(167, 167, 167);
 }
 .fourthSet img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 /* --------------------------------INDEX CSS---------------- */
 #indexContainer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .adLong {
-    margin-top: 10px;
-    height: 600px;
-    width: 15%;
-    background: url('https://picsum.photos/150/600');
+  margin-top: 10px;
+  height: 600px;
+  width: 15%;
+  background: url('https://picsum.photos/150/600');
 }
 .indexUl {
-    list-style-type: none;
-    width: 70%;
-    margin: 20px 40px 20px 40px;
+  list-style-type: none;
+  width: 70%;
+  margin: 20px 40px 20px 40px;
 }
 .title {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #indexList {
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
 }
 .picHolder {
-    width: 30%;
-    min-width: 150px;
+  width: 30%;
+  min-width: 150px;
 }
 .picHolder img {
-    width: 100%;
+  width: 100%;
 }
 .holder {
-    width: 40%;
-    margin-top: 10px;
-    min-width: 150px;
-    background: url("https://picsum.photos/500/500")
+  width: 40%;
+  margin-top: 10px;
+  min-width: 150px;
+  background: url('https://picsum.photos/500/500');
 }
 .editDelete {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .editDelete button {
-    background: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    padding: 3px;
+  background: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 3px;
 }
-.editDelete button:hover{ 
-    background: red;
-    color: white;
+.editDelete button:hover {
+  background: red;
+  color: white;
 }
 .editDelete a {
-    padding: 2px 5px 2px 5px;
-    border: 1px solid black;
-    border-radius: 5px;
+  padding: 2px 5px 2px 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 .editDelete a:hover {
-    background-color: black;
+  background-color: black;
 }
 .indexInfo {
-    width: 75%;
-    padding: 0 0 0 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 75%;
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.indexInfo a{
-    text-decoration: none;
-    color: black;
-    transition: text-shadow .2s ease-in-out;
+.indexInfo a {
+  text-decoration: none;
+  color: black;
+  transition: text-shadow 0.2s ease-in-out;
 }
-.indexInfo a:hover{
-    color: white;
-    text-shadow: 2px 2px 4px black;
+.indexInfo a:hover {
+  color: white;
+  text-shadow: 2px 2px 4px black;
 }
 /* --------------------------------INDEX END---------------- */
 /* --------------------------------FORM START---------------*/
 .formHolder {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    margin: 10px;
-    background: lightgrey;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  background: lightgrey;
 }
 .formHolder button {
-    width: 100%;
-    height: 30px;
+  width: 100%;
+  height: 30px;
 }
 
 .formHolder div {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
-.list-title{
-    display: inline-block;
-    text-align: end;
-    width: 49.5%;
+.list-title {
+  display: inline-block;
+  text-align: end;
+  width: 49.5%;
 }
 input {
-    width: 49.5%;
-    border: none;
-    border-radius: 0;
-    height: 20px;
+  width: 49.5%;
+  border: none;
+  border-radius: 0;
+  height: 20px;
 }
 .fa-star {
-    color: gray;
-    cursor: pointer;
+  color: gray;
+  cursor: pointer;
 }
 .review-star:hover {
-    color: gold;
+  color: gold;
 }
 .filled {
-    color: gold;
+  color: gold;
 }
 .rating {
-    display: none;
+  display: none;
 }
 /* --------------------------------FORM END---------------*/
 /* --------------------------------SHOW START---------------*/
 .twoHolder {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    margin: 0 0 20px 30px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 0 20px 30px;
 }
 .twoHolder h3 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .showDes {
-    display: block;
-    width: 100%;
-    margin-left: 10px;
+  display: block;
+  width: 100%;
+  margin-left: 10px;
 }
 
 .showUl {
-    list-style-type: none;
+  list-style-type: none;
 }
 .showUl a {
-    text-decoration: none;
-    color: black;
-    transition: text-shadow .2s ease-in-out;
+  text-decoration: none;
+  color: black;
+  transition: text-shadow 0.2s ease-in-out;
 }
 .showUl a:hover {
-    color: white;
-    text-shadow: 2px 2px 4px black;
+  color: white;
+  text-shadow: 2px 2px 4px black;
 }
 
 .showImg {
-    width: 100%;
-    max-width: 350px;
-    margin-bottom: 10px;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 10px;
 }
 
 .reviewLi {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .profilePic {
-    width: 30%;
-    padding-right: 20px;
-    text-align: center;
+  width: 30%;
+  padding-right: 20px;
+  text-align: center;
 }
 .profilePic img {
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 50%;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 50%;
 }
 .review-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 .review-box {
-    width: 100vw;
+  width: 100vw;
 }
 /* .showStats {
     align-self: flex-end;
 } */
 /* --------------------------------SHOW END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
-@media screen and (max-width: 650px){
-    #indexContainer {
-        display: flex;
-        flex-direction: column;
-        min-width: 600px;
-    }
-    .adLong {
-        margin-top: 10px;
-        height: 100px;
-        width: 100%;
-        background-color: rgb(201, 201, 201);
-    }
-    .indexUl {
-        width: 100%;
-    }
-    .threeContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    .threeSet {
-        width: 50%;
-        min-width: 200px;
-        min-height: 300px; 
-        flex-wrap: wrap;
-        align-content: space-around;
-        margin-bottom: 20px;
-        background-color: rgb(167, 167, 167);
-    }
-    .circleContainer {
-        margin: 15px 0 15px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .round {
-        margin-bottom: 10px;
-    }
-    .halfset {
-        width: 40%;
-        min-width: 200px;
-        min-height: 300px; 
-        flex-wrap: wrap;
-        align-content: space-around;
-        margin-bottom: 20px;
-    }
-    .fourthSet {
-        width: 40%;
-        min-width: 200px;
-        min-height: 300px; 
-        flex-wrap: wrap;
-        align-content: space-around;
-        margin-bottom: 20px;
-    }
-    .adLong {
-        background: url('https://picsum.photos/1000/100');
-    }
+@media screen and (max-width: 650px) {
+  #indexContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+  }
+  .adLong {
+    margin-top: 10px;
+    height: 100px;
+    width: 100%;
+    background-color: rgb(201, 201, 201);
+  }
+  .indexUl {
+    width: 100%;
+  }
+  .threeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .threeSet {
+    width: 50%;
+    min-width: 200px;
+    min-height: 300px;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-bottom: 20px;
+    background-color: rgb(167, 167, 167);
+  }
+  .circleContainer {
+    margin: 15px 0 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .round {
+    margin-bottom: 10px;
+  }
+  .halfset {
+    width: 40%;
+    min-width: 200px;
+    min-height: 300px;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-bottom: 20px;
+  }
+  .fourthSet {
+    width: 40%;
+    min-width: 200px;
+    min-height: 300px;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-bottom: 20px;
+  }
+  .adLong {
+    background: url('https://picsum.photos/1000/100');
+  }
 }
-    

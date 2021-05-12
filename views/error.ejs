@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include("./partials/head") %>
     <title>Error</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <%- include('./partials/nav') %>
-        <section id="mainFeatured">
-            <h1>Uhoh! Error!</h1>
-        </section>
-        <section>
-            <%= message %>
-        </section>
-        <%- include('./partials/footer') %>
+      <section id="mainFeatured">
+        <h1>Uhoh! Error!</h1>
+      </section>
+      <section><%= message %></section>
+      <%- include('./partials/footer') %>
     </main>
-
-</body>
+  </body>
 </html>
