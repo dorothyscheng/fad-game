@@ -5,11 +5,10 @@
     <title>All Users</title>
 </head>
 <body>
+    <%- include('../partials/nav') %>
     <main>
-      <%- include('../partials/nav') %>
         <section id="indexContainer">
             <div class="adLong">
-                ad
             </div>
                 <ul class="indexUl">
                 <% users.forEach(element=>{ %>
@@ -30,11 +29,9 @@
                 <% }) %>
                 </ul>
             <div class="adLong">
-                ad
             </div>
         </section>
-        <%- include('../partials/footer') %>
     </main>
-    
+    <%- include('../partials/footer') %>
 </body>
 </html>

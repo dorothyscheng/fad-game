@@ -5,8 +5,8 @@
     <title><%= selected.username %></title>
 </head>
 <body>
+    <%- include('../partials/nav') %>
     <main>
-        <%- include('../partials/nav') %>
         <h1><%= selected.username %></h1>
         <div class="threeContainer">
             <div class="profilePic">
@@ -32,8 +32,8 @@
                 </ul>
             </div>
         </div>
-        <%- include('../partials/footer') %>
     </main>
+    <%- include('../partials/footer') %>
 </body>
 </html>
 
