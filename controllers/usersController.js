@@ -62,20 +62,28 @@ router.get('/', async (req, res, error) => {
 });
 // New
 router.get('/new', (req, res) => {
-  res.render('users/user-new');
+  res.render('users/user-new',{
+    message: req.query.message,
+  });
 });
 // Post
 router.post('/', async (req, res, next) => {
   try {
-    const hashPassword = await bcrypt.hash(req.body.password, 10);
-    if (!req.body.profilePic) {
-      delete req.body.profilePic;
+    const existingUserCheck= await db.User.findOne({username: req.body.username});
+    if (existingUserCheck) {
+      message='That username is already taken. Try another.'
+      return res.redirect(`/users/new?message=${message}`);
+    } else {
+      const hashPassword = await bcrypt.hash(req.body.password, 10);
+      if (!req.body.profilePic) {
+        delete req.body.profilePic;
+      }
+      await db.User.create({
+        username: req.body.username,
+        password: hashPassword,
+      });
+      res.redirect('/users');
     }
-    await db.User.create({
-      username: req.body.username,
-      password: hashPassword,
-    });
-    res.redirect('/users');
   } catch (error) {
     error.statusCode = 400;
     next(error);
