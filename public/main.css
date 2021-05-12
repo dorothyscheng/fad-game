@@ -211,6 +211,19 @@ input {
     border-radius: 0;
     height: 20px;
 }
+.fa-star {
+    color: gray;
+    cursor: pointer;
+}
+.fa-star:hover {
+    color: yellow;
+}
+.filled {
+    color: yellow;
+}
+.rating {
+    display: none;
+}
 /* --------------------------------FORM END---------------*/
 /* --------------------------------SHOW START---------------*/
 .twoHolder {

@@ -16,12 +16,26 @@
           <h3>By <%= username %></h3>
           <form action="/reviews" method="POST">
             <div>
-                <label for="gameName" class="list-title">Game Name: </label>
-                <input type="text" name="gameName">
+              <label for="gameName" class="list-title">Game Name: </label>
+              <select name="gameName" id="game-name-select">
+                <% games.forEach(element=>{ %>
+                  <option value="<%= element.name %>"><%= element.name %></option>
+                <% }) %>
+              </select>
             </div>
             <div>
                 <label for="rating" class="list-title">Rating (1-10):</label>
-                <input type="number" name="rating">
+                <input id="rating" class="rating" type="number" name="rating">
+                <i id="star0" class="fas fa-star"></i>
+                <i id="star1" class="fas fa-star"></i>
+                <i id="star2" class="fas fa-star"></i>
+                <i id="star3" class="fas fa-star"></i>
+                <i id="star4" class="fas fa-star"></i>
+                <i id="star5" class="fas fa-star"></i>
+                <i id="star6" class="fas fa-star"></i>
+                <i id="star7" class="fas fa-star"></i>
+                <i id="star8" class="fas fa-star"></i>
+                <i id="star9" class="fas fa-star"></i>
             </div>
             <div>
                 <label for="review" class="list-title">Review:</label>

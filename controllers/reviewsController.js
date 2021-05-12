@@ -15,8 +15,12 @@ function requireLogin(req,res,next) {
   };
 
 // New
-router.get('/new', requireLogin, (req,res)=> {
-    res.render('reviews/review-new', {username: req.session.currentUser});
+router.get('/new', requireLogin, async (req,res)=> {
+    const allGames= await db.Game.find();
+    res.render('reviews/review-new', {
+        username: req.session.currentUser,
+        games: allGames,
+    });
 });
 // Post
 router.post('/', requireLogin, async (req,res,next)=>{
