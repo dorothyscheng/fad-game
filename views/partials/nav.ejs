@@ -8,11 +8,9 @@
     <li><a href="/reviews/new">New Review</a></li>
     <li><a href="/users/profile">My Profile</a></li>
     <li><a href="<%= accessUrl %>"><%= accessText %></a></li>
-
   </ul>
-  <form action="/games/search" method="GET">
-    <input type="text" placeholder="Search For A Game" name="search">
+  <form action="/games" method="GET">
+    <input type="text" placeholder="Search by game name..." name="search">
     <button type="submit">Search</button>
-
   </form>
 </nav>

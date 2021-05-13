@@ -14,10 +14,24 @@ function requireLogin(req, res, next) {
   }
 }
 
+
+// reference for fuzzy search: https://www.youtube.com/watch?v=9_lKMTXVk64
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$!#\s]/g, '\\$&');
+};
+
+
+
 // INDEX
 router.get('/', async (req, res, next) => {
   try {
-    const allGames = await db.Game.find();
+    let allGames=[];
+    if (req.query.search) {
+      const regex= new RegExp(escapeRegex(req.query.search), 'gi');
+      allGames = await db.Game.find({name: regex});
+    } else {
+      allGames = await db.Game.find();
+    };
     res.render('games/game-index', {
       games: allGames,
       accessUrl: req.accessUrl,
@@ -67,19 +81,6 @@ router.post('/', async (req, res, next) => {
     res.redirect('/games');
   } catch (error) {
     error.statusCode = 400;
-    next(error);
-  }
-});
-//POST
-router.get('/search', async (req, res, next) => {
-  try {
-     const foundGames = await db.Game.aggregate(
-      [{$match:{
-        name: req.body.search
-      }}]
-    );
-    res.send(foundGames);
-  } catch (error) {
     next(error);
   }
 });
