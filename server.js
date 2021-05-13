@@ -81,13 +81,13 @@ app.get('/', async (req, res) => {
   const sortedGames = allGameRatings.sort((a,b)=>{
     return b.avgRating-a.avgRating;
   });
-  let maxTopGames=4; // we want to display the top 4 games
+  let maxTopGames=9; // we want to display the top 4 games
   if (sortedGames.length<maxTopGames) {
     maxTopGames=sortedGames.length; // but if there are fewer than 4 games in the db, only send what is in db
   };
-  let topFourGames=[];
+  let topNineGames=[];
   for (let i=0; i<maxTopGames; i++) {
-    topFourGames.push(sortedGames[i]);
+    topNineGames.push(sortedGames[i]);
   };
   // Find users with the most reviews
   const allUsers= await db.User.find();
@@ -117,7 +117,7 @@ app.get('/', async (req, res) => {
   res.render('home.ejs', {
     accessUrl: req.accessUrl,
     accessText: req.accessText,
-    topFourGames: topFourGames,
+    topNineGames: topNineGames,
     topFiveUsers: topFiveUsers,
   });
 });

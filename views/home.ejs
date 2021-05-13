@@ -11,28 +11,28 @@
             <img src="/images/fad-logo.png">
             <h1>Welcome to FAD Games</h1>
         </section>
-
-        <section class="threeContainer">
+        <h3 class="mainTitle">Top Rated</h3>
+        <section class="threeContainer topContainer">
             <div id="topGames" class="threeSet">
-                <% topFourGames.forEach(element=> { %>
+                <% for (let i = 1; i<5;i++){ %>
                     <div class="fourPanel">
-                        <a href="/games/<%= element.id %>"><img src="<%= element.image %>" alt="<%= element.name %> game box"></a>
-                        <h5><%= element.name %></h5>
+                        <a href="/games/<%= topNineGames[i].id %>"><img src="<%= topNineGames[i].image %>" alt="<%= topNineGames[i].name %> game box"></a>
+                        <h5><%= topNineGames[i].name %></h5>
                     </div>
-                <% }) %>
+                <% } %>
             </div>
             <div class="threeSet">
+                <a href="/games/<%= topNineGames[0].id %>"><img src="<%= topNineGames[0].image %>" alt="<%= topNineGames[0].name %> game box"></a>
+                <h3><%= topNineGames[0].name %></h3>
             </div>
             <div class="threeSet">
-                <% topFourGames.forEach(element=> { %>
-                    <div class="fourPanel">
-                        <a href="/games/<%= element.id %>"><img src="<%= element.image %>" alt="<%= element.name %> game box"></a>
-                        <% for (let i=0; i<Math.floor(element.avgRating); i++) { %>
-                            <i class="fas fa-star filled"></i>
-                        <% } %>
-                    </div>
-                <% }) %>
-            </div>
+                    <% for (let i = 5; i<9;i++){ %>
+                        <div class="fourPanel">
+                            <a href="/games/<%= topNineGames[i].id %>"><img src="<%= topNineGames[i].image %>" alt="<%= topNineGames[i].name %> game box"></a>
+                            <h5><%= topNineGames[i].name %></h5>
+                        </div>
+                    <% } %>
+                </div>
         </section>
         <h3 class="mainTitle">See reviews left by our amazing users</h3>
         <section class=circleContainer>
@@ -46,11 +46,13 @@
         <section class="threeContainer">
             <div class="halfSet"></div>
             <div class="fourthSet">
+                
+            </div>
+            <div class="fourthSet">
                 <img src="https://picsum.photos/200/200">
             </div>
-            <div class="fourthSet"></div>
         </section>
-
+<!-- 
         <section class="threeContainer">
             <div class="threeSet">
                 <div class=fourPanel></div>
@@ -66,7 +68,7 @@
                 <div class=fourPanel></div>
                 <div class=fourPanel></div>
             </div>
-        </section>
+        </section> -->
     </main>
     <%- include('./partials/footer') %>
 </body>

@@ -62,7 +62,7 @@ footer {
 }
 /* -------------------------FOOTER END--------------- */
 main {
-  width: 90%;
+  width: 100%;
   max-width: 1500px;
   min-width: 900px;
 }
@@ -85,6 +85,13 @@ main {
   margin-top: 10px;
   width: 100%;
 }
+.topContainer {
+  background: grey;
+  padding: 30px 20px 30px 20px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
 .threeSet {
   width: 31%;
   min-width: 200px;
@@ -93,18 +100,30 @@ main {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-around;
-  background-color: rgb(167, 167, 167);
+  box-sizing: border-box;
 }
+.threeSet a {
+  display: flex;
+  justify-content: center;
+}
+.threeSet img {
+  width: 85%;
+}
+
 .fourPanel {
   width: 40%;
   height: 40%;
-  margin: 5px;
-  border: 1px solid black;
-
+  margin: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 .fourPanel img {
   width: 100%;
   transition: box-shadow .2s ease-in-out;
+  margin-bottom: 5px;
 }
 .fourPanel img:hover {
   box-shadow: 3px 3px 6px black;
@@ -117,7 +136,8 @@ main {
 }
 
 .circleContainer {
-  margin: 15px 0 15px 0;
+  padding: 0 25px 25px 25px;
+  margin: 30px 0 30px 0;
   display: flex;
   justify-content: space-between;
 }
