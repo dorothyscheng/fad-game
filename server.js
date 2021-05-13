@@ -77,6 +77,7 @@ app.get('/', async (req, res) => {
     };
     allGameRatings.push(currentGameObj);  
   });
+  // reference for sorting: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
   const sortedGames = allGameRatings.sort((a,b)=>{
     return b.avgRating-a.avgRating;
   });

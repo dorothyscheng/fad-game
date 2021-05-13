@@ -17,9 +17,21 @@ function requireLogin(req,res,next) {
 // New
 router.get('/new', requireLogin, async (req,res)=> {
     const allGames= await db.Game.find();
+    // reference for sorting: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+    const sortedGames = allGames.sort((a,b)=>{
+        let fa=a.name.toLowerCase();
+        let fb=b.name.toLowerCase();
+        if (fa<fb) {
+            return -1;
+        } else if (fa>fb) {
+            return 1;
+        } else {
+            return 0;
+        };
+    })
     res.render('reviews/review-new', {
         username: req.session.currentUser,
-        games: allGames,
+        games: sortedGames,
         accessUrl: req.accessUrl,
         accessText: req.accessText,
     });
