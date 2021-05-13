@@ -1,5 +1,4 @@
-![FAD Logo]
-(./public/images/fad-logo.png)
+![FAD Logo](./public/images/fad-logo.png)
 
 # FAD GAMES
 
@@ -38,8 +37,7 @@ FAD Games is a gaming review user-interface app. It allows users to learn about 
 * Position of ad bars allows for monetizing the site
 * Database contains three related models
 
-![ERD-Image]
-(./README/ERD.png)
+![ERD-Image](./README/ERD.png)
 
 
 ## Planned Features
