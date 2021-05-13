@@ -14,13 +14,10 @@ function requireLogin(req, res, next) {
   }
 }
 
-
 // reference for fuzzy search: https://www.youtube.com/watch?v=9_lKMTXVk64
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$!#\s]/g, '\\$&');
 };
-
-
 
 // INDEX
 router.get('/', async (req, res, next) => {

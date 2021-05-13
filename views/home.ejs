@@ -44,9 +44,16 @@
         </section>
 
         <section class="threeContainer">
-            <div class="halfSet"></div>
+            <div class="halfSet">
+                <i class="fas fa-quote-left"></i>
+                <%= randomGame.review %>
+                <% for (let i=0; i<randomGame.rating; i++) { %>
+                    <i class="fas fa-star filled"></i>
+                <% } %>
+            </div>
             <div class="fourthSet">
-                
+                <a href="/games/<%= randomGame.id %>"><img src="<%= randomGame.image %>" alt="<%= randomGame.name %> game box"></a>
+                <h5><%= randomGame.name %></h5>
             </div>
             <div class="fourthSet">
                 <img src="https://picsum.photos/200/200">

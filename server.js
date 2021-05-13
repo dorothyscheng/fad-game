@@ -68,8 +68,12 @@ app.get('/', async (req, res) => {
   // Find top rated games
   const allGames= await db.Game.find().populate('reviews');
   let allGameRatings=[];
+  let allGamesWithReviews=[];
   allGames.forEach(currentGame =>{
     let ratingSum=0;
+    if (currentGame.reviews.length>0) {
+      allGamesWithReviews.push(currentGame);
+    };
     currentGame.reviews.forEach(element=>{
       ratingSum+=element.rating;
     });
@@ -114,13 +118,22 @@ app.get('/', async (req, res) => {
   for (let i=0; i<maxTopUsers; i++) {
     topFiveUsers.push(sortedUsers[i]);
   };
-
-
+  // random review and game
+  const randomNumberGame= Math.floor(Math.random()*allGamesWithReviews.length);
+  const randomNumberReview=Math.floor(Math.random()*allGamesWithReviews[randomNumberGame].reviews.length);
+  const randomGameObj={
+    name: allGamesWithReviews[randomNumberGame].name,
+    review: allGamesWithReviews[randomNumberGame].reviews[randomNumberReview].review,
+    rating: allGamesWithReviews[randomNumberGame].reviews[randomNumberReview].rating,
+    id: allGamesWithReviews[randomNumberGame]._id,
+    image: allGamesWithReviews[randomNumberGame].image
+  };
   res.render('home.ejs', {
     accessUrl: req.accessUrl,
     accessText: req.accessText,
     topNineGames: topNineGames,
     topFiveUsers: topFiveUsers,
+    randomGame: randomGameObj,
   });
 });
 // Catch-all
