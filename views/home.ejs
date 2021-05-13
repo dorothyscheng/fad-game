@@ -13,19 +13,24 @@
         </section>
 
         <section class="threeContainer">
-            <div class="threeSet">
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
+            <div id="topGames" class="threeSet">
+                <% topFourGames.forEach(element=> { %>
+                    <div class="fourPanel">
+                        <a href="/games/<%= element.id %>"><img src="<%= element.image %>" alt="<%= element.name %> game box"></a>
+                        <% for (let i=0; i<Math.floor(element.avgRating); i++) { %>
+                            <i class="fas fa-star filled"></i>
+                        <% } %>
+                    </div>
+                <% }) %>
             </div>
             <div class="threeSet">
             </div>
             <div class="threeSet">
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
+                <% topFourUsers.forEach(element=> { %>
+                    <div class="fourPanel">
+                        <a href="/users/<%= element.id %>"><img src="<%= element.profilePic %>" alt="<%= element.username %> picture"></a>
+                    </div>
+                <% }) %>
             </div>
         </section>
 

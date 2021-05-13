@@ -59,10 +59,65 @@ app.use('/reviews', reviewsController);
 
 ////////////////////////////////////////////ROUTES
 // Home
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  // Find top rated games
+  const allGames= await db.Game.find().populate('reviews');
+  let allGameRatings=[];
+  allGames.forEach(currentGame =>{
+    let ratingSum=0;
+    currentGame.reviews.forEach(element=>{
+      ratingSum+=element.rating;
+    });
+    const averageRating=ratingSum/currentGame.reviews.length;
+    const currentGameObj={
+      name: currentGame.name,
+      id: currentGame._id,
+      image: currentGame.image,
+      avgRating: averageRating,
+    };
+    allGameRatings.push(currentGameObj);  
+  });
+  const sortedGames = allGameRatings.sort((a,b)=>{
+    return b.avgRating-a.avgRating;
+  });
+  let maxTopGames=4; // we want to display the top 4 games
+  if (sortedGames.length<maxTopGames) {
+    maxTopGames=sortedGames.length; // but if there are fewer than 4 games in the db, only send what is in db
+  };
+  let topFourGames=[];
+  for (let i=0; i<maxTopGames; i++) {
+    topFourGames.push(sortedGames[i]);
+  };
+  // Find users with the most reviews
+  const allUsers= await db.User.find();
+  let allUserReviewsCount=[];
+  allUsers.forEach(currentUser =>{
+    const currentUserObj={
+      username: currentUser.username,
+      id: currentUser._id,
+      profilePic: currentUser.profilePic,
+      numReviews: currentUser.reviews.length,
+    };
+    allUserReviewsCount.push(currentUserObj);  
+  });
+  const sortedUsers = allUserReviewsCount.sort((a,b)=>{
+    return b.numReviews-a.numReviews;
+  });
+  let maxTopUsers=4; // we want to display the top 4 users
+  if (sortedUsers.length<maxTopUsers) {
+    maxTopUsers=sortedUsers.length; // but if there are fewer than 4 users in the db, only send what is in db
+  };
+  let topFourUsers=[];
+  for (let i=0; i<maxTopUsers; i++) {
+    topFourUsers.push(sortedUsers[i]);
+  };
+
+
   res.render('home.ejs', {
     accessUrl: req.accessUrl,
     accessText: req.accessText,
+    topFourGames: topFourGames,
+    topFourUsers: topFourUsers,
   });
 });
 // Catch-all
