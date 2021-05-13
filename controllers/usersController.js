@@ -8,6 +8,7 @@ router.use(methodOverride('_method'));
 
 /////////login
 router.get('/login', (req, res) => {
+  req.session.destination=req.query.destination;
   res.render('users/user-login',{
     accessUrl: req.accessUrl,
     accessText: req.accessText,
@@ -26,8 +27,11 @@ router.post('/login', async (req, res) => {
         req.session.isAdmin = true;
       }
       req.session.currentUser = user.username;
-  
-      res.redirect(`/users/${user._id}`);
+      if (req.session.destination) {
+        res.redirect(req.session.destination);
+      } else {
+        res.redirect(`/users/${user._id}`);
+      };
     } else {
       res.redirect('/users/login');
     }
@@ -36,9 +40,9 @@ router.post('/login', async (req, res) => {
   };
 });
 //////login redirect
-function requireLogin(req,res,next) {
+function requireLogin(req,res,next) {;
   if (!req.session.currentUser) {
-      res.redirect('/users/login');
+      res.redirect(`/users/login?destination=${req.originalUrl}`);
   } else {
       next();
   };

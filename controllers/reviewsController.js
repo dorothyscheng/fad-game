@@ -8,7 +8,7 @@ router.use(methodOverride('_method'));
 //////login redirect
 function requireLogin(req,res,next) {
     if (!req.session.currentUser) {
-        res.redirect('/users/login');
+        res.redirect(`users/login?destination=${req.originalUrl}`);
     } else {
         next();
     };

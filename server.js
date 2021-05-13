@@ -36,6 +36,11 @@ function checkAccessLink(req,res,next) {
 };
 app.use(checkAccessLink);
 
+// app.use((req,res,next)=>{
+//   console.log(req.originalUrl);
+//   next()
+// });
+
 ////////////////////////////////////////////
 
 app.use('/games', gamesController);
