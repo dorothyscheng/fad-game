@@ -1,10 +1,13 @@
-const $imageUrl=$('#gameImage');
+const $imageUrl=$('#image');
+const displayImage=$('#display-img');
+
+if (! displayImage.attr('src')) {
+    displayImage.attr('src',$imageUrl.val());
+}
 
 function updateImage() {
     const urlText=$imageUrl.val();
-    const displayImage=$('#display-game-img');
     displayImage.attr('src',urlText);
 }
-
 
 $imageUrl.on('change',updateImage);

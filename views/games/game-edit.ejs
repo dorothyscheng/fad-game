@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
+    <script src="/scripts/image-populate.js" defer></script>
     <title>Edit <%= selected.name %></title>
 </head>
 <body>
@@ -9,7 +10,7 @@
     <main>
       <div class=threeContainer>
         <div class=picHolder>
-          game box
+          <img id="display-img" src="" alt="game box">
         </div>
         <div class=formHolder>
           <h1>Edit <%= selected.name %></h1>
@@ -52,7 +53,7 @@
             </div>
             <div>
               <label for="image" class="list-title">Image URL:</label>
-              <input type="text" name="image" id="gameImage" value="<%= selected.image %>" />
+              <input type="text" name="image" id="image" value="<%= selected.image %>" />
             </div>
             <div>
               <button type="submit">Submit</button>
