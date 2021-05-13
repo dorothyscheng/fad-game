@@ -18,7 +18,7 @@
                     <li><span>Designers:</span> <%= selected.designer.join(', ') %></li>
                     <li><span>Average User Rating:</span> <%= avgRating %></li>
                     <li><span>Genres:</span> <%= selected.genre.join(', ') %></li>
-                    <li><a href="/reviews/new">Review this Game</a></li>
+                    <li class="review-button"><a href="/reviews/new">Review this Game</a></li>
                 </ul>
         </div>
         <h3>Description:</h3>
@@ -49,7 +49,8 @@
                 </ul>
             </div>
         </div>
+        <%- include('../partials/footer') %>
     </main>
-    <%- include('../partials/footer') %>
+
 </body>
 </html>
