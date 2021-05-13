@@ -17,8 +17,8 @@
           <form action="/reviews" method="POST">
             <div>
               <label for="gameName" class="list-title">Game Name: </label>
-              <select name="gameName" id="game-name-select">
-                <option value="blank"></option>
+              <select name="gameName" id="game-name-select" required>
+                <option value=""></option>
                 <% games.forEach(element=>{ %>
                   <option value="<%= element.name %>"><%= element.name %></option>
                 <% }) %>
