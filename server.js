@@ -104,13 +104,13 @@ app.get('/', async (req, res) => {
   const sortedUsers = allUserReviewsCount.sort((a,b)=>{
     return b.numReviews-a.numReviews;
   });
-  let maxTopUsers=4; // we want to display the top 4 users
+  let maxTopUsers=5; // we want to display the top 4 users
   if (sortedUsers.length<maxTopUsers) {
     maxTopUsers=sortedUsers.length; // but if there are fewer than 4 users in the db, only send what is in db
   };
-  let topFourUsers=[];
+  let topFiveUsers=[];
   for (let i=0; i<maxTopUsers; i++) {
-    topFourUsers.push(sortedUsers[i]);
+    topFiveUsers.push(sortedUsers[i]);
   };
 
 
@@ -118,7 +118,7 @@ app.get('/', async (req, res) => {
     accessUrl: req.accessUrl,
     accessText: req.accessText,
     topFourGames: topFourGames,
-    topFourUsers: topFourUsers,
+    topFiveUsers: topFiveUsers,
   });
 });
 // Catch-all

@@ -12,12 +12,12 @@
         <div class="threeContainer">
                 <img class="showImg" src="<%= selected.image %>" alt="<%= selected.name %> game box">
                 <ul class="showUl showStats">
-                    <li><span class="list-title">Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
-                    <li><span class="list-title">Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
-                    <li><span class="list-title">Age Rating:</span> <%= selected.ageRating %>+</li>
-                    <li><span class="list-title">Designers:</span> <%= selected.designer.join(', ') %></li>
-                    <li><span class="list-title">Average User Rating:</span> <%= avgRating %></li>
-                    <li><span class="list-title">Genres:</span> <%= selected.genre.join(', ') %></li>
+                    <li><span>Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
+                    <li><span>Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
+                    <li><span>Age Rating:</span> <%= selected.ageRating %>+</li>
+                    <li><span>Designers:</span> <%= selected.designer.join(', ') %></li>
+                    <li><span>Average User Rating:</span> <%= avgRating %></li>
+                    <li><span>Genres:</span> <%= selected.genre.join(', ') %></li>
                 </ul>
         </div>
         <h3>Description:</h3>

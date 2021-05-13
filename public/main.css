@@ -4,7 +4,7 @@
   font-family: sans-serif;
 }
 body {
-  background-color: rgb(243, 243, 243);
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(202, 202, 202));
   margin: 0;
   display: flex;
   align-items: center;
@@ -98,7 +98,22 @@ main {
 .fourPanel {
   width: 40%;
   height: 40%;
-  background-color: rgb(201, 201, 201);
+  margin: 5px;
+  border: 1px solid black;
+
+}
+.fourPanel img {
+  width: 100%;
+  transition: box-shadow .2s ease-in-out;
+}
+.fourPanel img:hover {
+  box-shadow: 3px 3px 6px black;
+}
+
+.mainTitle {
+  font-size: 25px;
+  text-align: center;
+  margin: 40px 0 15px 0;
 }
 
 .circleContainer {
@@ -107,10 +122,16 @@ main {
   justify-content: space-between;
 }
 .round {
-  border-radius: 50%;
   width: 150px;
   height: 150px;
-  background-color: rgb(201, 201, 201);
+}
+.round img {
+  width:100%;
+  border-radius: 50%;
+  transition: box-shadow .2s ease-in-out;
+}
+.round img:hover{
+  box-shadow: 3px 3px 6px black;
 }
 
 .halfSet {
@@ -168,6 +189,7 @@ main {
   background: url('https://picsum.photos/500/500');
 }
 .editDelete {
+  margin-top: 10px;
   display: flex;
   justify-content: flex-end;
 }
@@ -259,6 +281,11 @@ input {
 .twoHolder h3 {
   margin-bottom: 15px;
 }
+
+.game-link {
+  font-size: 20px;
+}
+
 .showDes {
   display: block;
   width: 100%;
@@ -279,9 +306,17 @@ input {
 }
 
 .showImg {
-  width: 100%;
-  max-width: 350px;
+  width: 40%;
+  max-width: 500px;
   margin-bottom: 10px;
+}
+.showStats {
+  width: 55%;
+  line-height: 35px;
+  font-size: 18px;
+}
+.showStats span {
+  font-weight: bold;
 }
 
 .reviewLi {
@@ -306,9 +341,6 @@ input {
 .review-box {
   width: 100vw;
 }
-/* .showStats {
-    align-self: flex-end;
-} */
 /* --------------------------------SHOW END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
 @media screen and (max-width: 650px) {
@@ -380,6 +412,7 @@ input {
     align-content: space-around;
     margin-bottom: 20px;
   }
+
   .adLong {
     background: url('https://picsum.photos/1000/100');
   }
