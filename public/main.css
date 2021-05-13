@@ -5,6 +5,7 @@
 }
 body {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(202, 202, 202));
+  background-repeat: no-repeat;
   margin: 0;
   display: flex;
   align-items: center;
@@ -15,6 +16,8 @@ nav {
   width: 100%;
   padding: 15px 0 15px 0;
   background-color: rgb(167, 167, 167);
+  display: flex;
+  flex-direction: column;
 }
 .nav {
   display: flex;
@@ -30,6 +33,27 @@ nav {
   transition: color 0.2s ease-in-out;
 }
 .nav a:hover {
+  color: white;
+}
+
+.search-bar {
+  align-self: flex-end;
+  margin: 10px 10px 0 0;
+  padding: 0;
+}
+.search-bar input{
+  width: 200px;
+}
+.search-bar button{
+  border-radius: 5px;
+  padding: 2px;
+  border: 1px solid black;
+  cursor: pointer;
+  background: none;
+  transition: background .2s ease-in-out;
+}
+.search-bar button:hover {
+  background: black;
   color: white;
 }
 /* -------------------------NAV END--------------- */
@@ -63,8 +87,7 @@ footer {
 /* -------------------------FOOTER END--------------- */
 main {
   width: 100%;
-  max-width: 1500px;
-  min-width: 900px;
+  min-width: 700px;
 }
 
 #mainFeatured {
@@ -84,6 +107,8 @@ main {
   flex-direction: row;
   margin-top: 10px;
   width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 .topContainer {
   background: grey;
@@ -135,6 +160,13 @@ main {
   margin: 40px 0 15px 0;
 }
 
+.middleBest {
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
 .circleContainer {
   padding: 0 25px 25px 25px;
   margin: 30px 0 30px 0;
@@ -148,6 +180,9 @@ main {
 .round img {
   width:100%;
   border-radius: 50%;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
   transition: box-shadow .2s ease-in-out;
 }
 .round img:hover{
@@ -158,8 +193,19 @@ main {
   margin-bottom: 20px;
   width: 45%;
   height: 300px;
+  padding: 10px;
   background-color: rgb(167, 167, 167);
+  box-sizing: border-box;
 }
+.halfSet p {
+  padding: 10px;
+  font-style: italic;
+  overflow: scroll;
+}
+.fa-quote-left {
+  font-size: 25px;
+}
+
 .fourthSet {
   width: 25%;
   height: 300px;
@@ -202,6 +248,18 @@ main {
 .picHolder img {
   width: 100%;
 }
+
+.userPicHolder{ 
+  width: 150px;
+}
+
+.userIndexPic {
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
 .holder {
   width: 40%;
   margin-top: 10px;
@@ -290,13 +348,20 @@ input {
 .rating {
   display: none;
 }
+
+.textarea-box {
+  display: flex;
+}
+textarea {
+  margin-left: 5px;
+}
 /* --------------------------------FORM END---------------*/
 /* --------------------------------SHOW START---------------*/
 .twoHolder {
   display: flex;
   flex-direction: column;
   width: 70%;
-  margin: 0 0 20px 30px;
+  margin: 0 40px 20px 30px;
 }
 .twoHolder h3 {
   margin-bottom: 15px;
@@ -350,8 +415,10 @@ input {
 }
 .profilePic img {
   margin-top: 10px;
-  width: 100%;
   border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }
 .review-container {
   width: 100%;
@@ -435,5 +502,12 @@ input {
 
   .adLong {
     background: url('https://picsum.photos/1000/100');
+  }
+  .profilePic img {
+    margin-top: 10px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
   }
 }

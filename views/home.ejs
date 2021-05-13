@@ -21,7 +21,7 @@
                     </div>
                 <% } %>
             </div>
-            <div class="threeSet">
+            <div class="threeSet middleBest">
                 <a href="/games/<%= topNineGames[0].id %>"><img src="<%= topNineGames[0].image %>" alt="<%= topNineGames[0].name %> game box"></a>
                 <h3><%= topNineGames[0].name %></h3>
             </div>
@@ -46,14 +46,15 @@
         <section class="threeContainer">
             <div class="halfSet">
                 <i class="fas fa-quote-left"></i>
-                <%= randomGame.review %>
+                </br>
+                    <p><%= randomGame.review %></p>
+                </br>
                 <% for (let i=0; i<randomGame.rating; i++) { %>
                     <i class="fas fa-star filled"></i>
                 <% } %>
             </div>
             <div class="fourthSet">
                 <a href="/games/<%= randomGame.id %>"><img src="<%= randomGame.image %>" alt="<%= randomGame.name %> game box"></a>
-                <h5><%= randomGame.name %></h5>
             </div>
             <div class="fourthSet">
                 <img src="https://picsum.photos/200/200">

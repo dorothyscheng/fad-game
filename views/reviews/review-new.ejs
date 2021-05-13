@@ -9,10 +9,10 @@
     <%- include('../partials/nav') %>
     <main>
       <div class="threeContainer">
-        <div class=holder>
+        <div class="holder">
           ADVERTISMENT
         </div>
-        <div class=formHolder>
+        <div class="formHolder">
           <h1>New Review</h1>
           <h3>By <%= username %></h3>
           <form action="/reviews" method="POST">
@@ -42,9 +42,10 @@
                 <i id="star8" class="fas fa-star review-star"></i>
                 <i id="star9" class="fas fa-star review-star"></i>
             </div>
-            <div>
+            <div class="textarea-box">
                 <label for="review" class="list-title">Review:</label>
-                <input type="text" name="review">
+                <!-- <input type="text" name="review"> -->
+                <textarea name="review" id="review" cols="30" rows="10"></textarea>
             </div>
             <div>
               <button type="submit">Submit</button>
