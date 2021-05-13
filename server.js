@@ -47,7 +47,7 @@ app.use('/games', gamesController);
 app.use('/users', usersController);
 app.use('/reviews', reviewsController);
 
-// ///////////Dummy Data
+///////////Dummy Data
 // const tempGames = require('./models/tempGames');
 // db.Game.create(tempGames,(err,allGames) => {
 //     if (err) return console.log(err);
@@ -65,7 +65,9 @@ app.use('/reviews', reviewsController);
 ////////////////////////////////////////////ROUTES
 // Home
 app.get('/', async (req, res) => {
-  // Find top rated games
+
+
+//  Find top rated games
   const allGames= await db.Game.find().populate('reviews');
   let allGameRatings=[];
   let allGamesWithReviews=[];
@@ -84,7 +86,7 @@ app.get('/', async (req, res) => {
       image: currentGame.image,
       avgRating: averageRating,
     };
-    allGameRatings.push(currentGameObj);  
+    allGameRatings.push(currentGameObj);
   });
   // reference for sorting: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
   const sortedGames = allGameRatings.sort((a,b)=>{
@@ -105,7 +107,7 @@ app.get('/', async (req, res) => {
       profilePic: currentUser.profilePic,
       numReviews: currentUser.reviews.length,
     };
-    allUserReviewsCount.push(currentUserObj);  
+    allUserReviewsCount.push(currentUserObj);
   });
   const sortedUsers = allUserReviewsCount.sort((a,b)=>{
     return b.numReviews-a.numReviews;
@@ -135,6 +137,8 @@ app.get('/', async (req, res) => {
     topFiveUsers: topFiveUsers,
     randomGame: randomGameObj,
   });
+
+
 });
 // Catch-all
 app.get('*', (req, res, next) => {
