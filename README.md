@@ -1,5 +1,41 @@
 FAD Games
 
+
+FAD Games.             Logo // ![Image Description]
+FAD Games is a game review user interface app. It allows for users to learn about their favorite games as well as write reviews, rate edit and delete games
+
+User Stories 
+Users have access and view page Games, Users, New Games, New Users, New Reviews and Log in/Log out buttons on the splash page (index)(show)
+Users can create profile page and be authenticated (new/create)
+Users can be Admin are able to delete games and edit users, games and reviews.
+Users can see link to games (index)
+Users can read and write reviews (index)
+Users can delete a review (destroy)
+Users can edit a review (edit/update)
+Users can rate games (edit/update)
+
+
+Strategies Used 
+
+Client-Server: HTTP Communications & REST/CRUD
+EJS HTML-Template
+3. NodeJS & ExpressJS Framework
+4. MongoDB & MongooseJS ODM
+5. Data Modeling
+6. Authentication using Sessions
+
+
+Current Features 
+
+Users
+
+Company logo
+The placing the login feature allows users redirects to login page
+The star-rating system, allows users to rate games from 1-10
+A search feature that allows users to search for games
+Position of Ad bars allows for monetizing the site
+There are edit/delete options for users to edit their profile info, image
+
 FAD-Games is an user interactive app that allows users to search, learn about games and their favorite game-designers. Users can review, edit, delete or even *purchase* their favorite games. Users have ability to create a profile-page and store private information once followed necessary authentication steps. *strech*
 [Link to project hosted on Heroku]()
 
