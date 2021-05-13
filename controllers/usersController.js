@@ -56,6 +56,19 @@ router.get('/logout', async (req, res) => {
     next(error);
   };
 });
+// Profile
+router.get('/profile', async (req,res, next)=>{
+  try {
+    if (req.session.currentUser) {
+      const user= await db.User.findOne({username: req.session.currentUser});
+      res.redirect(`/users/${user._id}`);
+    } else {
+      res.redirect('/users/login');
+    };
+  } catch (error) {
+    next(error);
+  };
+})
 // Index
 router.get('/', async (req, res, error) => {
   try {
@@ -92,6 +105,9 @@ router.post('/', async (req, res, next) => {
       await db.User.create({
         username: req.body.username,
         password: hashPassword,
+        profilePic: req.body.profilePic,
+        age: req.body.age,
+        preferredGenre: req.body.preferredGenre,
       });
       res.redirect('/users');
     }
