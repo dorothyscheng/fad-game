@@ -1,18 +1,20 @@
-# FAD-Games
-
-*Short explanation of the project (1-2 sentences) - what is the goal of the project and/or main functionality?*
+FAD Games
 
 FAD-Games is an user interactive app that allows users to search, learn about games and their favorite game-designers. Users can review, edit, delete or even *purchase* their favorite games. Users have ability to create a profile-page and store private information once followed necessary authentication steps. *strech*
-
-
-
 [Link to project hosted on Heroku]()
 
 ## Technologies Used
 
 *What technologies did you use to develop this project? (bullet points)*
 
-
+User Stories we are going to define a single Resource in this app called a Review so that we have something to CRUD:
+Users have access to page Games, Users, New Games, New Users, New Reviews and Log in/Log out buttons on the splash page
+Users can create profile page and be authenticated
+Users can see link to games
+Users can read and write reviews
+Users can delete a review (destroy)
+Users can edit a review (edit/update)
+Users can rate games
 
 ## Existing Features
 
