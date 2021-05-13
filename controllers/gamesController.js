@@ -29,14 +29,14 @@ router.get('/', async (req, res, next) => {
   }
 });
 //NEW
-router.get('/new', (req, res) => {
+router.get('/new',requireLogin, (req, res) => {
   res.render('games/game-new',{
     accessUrl: req.accessUrl,
     accessText: req.accessText,
   });
 });
 //POST
-router.post('/', requireLogin, async (req, res,next) => {
+router.post('/', async (req, res,next) => {
   try {
     const player = {
       min: req.body.minPlayers,
