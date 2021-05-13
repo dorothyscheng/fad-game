@@ -431,6 +431,7 @@ textarea {
 }
 .profilePic img {
   margin-top: 10px;
+  margin-bottom: 20px;
   border-radius: 50%;
   width: 250px;
   height: 250px;
@@ -450,11 +451,14 @@ textarea {
   padding: 4px;
   display: inline;
   transition: background .1s ease-in-out;
+  text-decoration: none;
+  color: black;
 }
 .review-button a:hover{
   background: black;
   color: white;
 }
+
 /* --------------------------------SHOW END---------------*/
 /* --------------------------------ERROR END---------------*/
 .error-section {

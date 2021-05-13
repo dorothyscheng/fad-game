@@ -12,6 +12,9 @@
             <div class="profilePic"> 
                 <h1><%= selected.username %></h1>
                 <img src="<%= selected.profilePic %>" alt="<%= selected.username %> user profile pic">
+                <div class="review-button">
+                    <a href="/users/<%= selected._id %>/edit">Edit Profile</a>
+                </div>
             </div>
             <div class=twoHolder>
                 <h3>All Reviews:</h3>
