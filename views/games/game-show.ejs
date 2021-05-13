@@ -8,47 +8,50 @@
 <body>
     <%- include('../partials/nav') %>
     <main>
-        <h1><%= selected.name %></h1>
-        <div class="threeContainer">
-                <img class="showImg" src="<%= selected.image %>" alt="<%= selected.name %> game box">
-                <ul class="showUl showStats">
-                    <li><span>Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
-                    <li><span>Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
-                    <li><span>Age Rating:</span> <%= selected.ageRating %>+</li>
-                    <li><span>Designers:</span> <%= selected.designer.join(', ') %></li>
-                    <li><span>Average User Rating:</span> <%= avgRating %></li>
-                    <li><span>Genres:</span> <%= selected.genre.join(', ') %></li>
-                    <li class="review-button"><a href="/reviews/new">Review this Game</a></li>
-                </ul>
-        </div>
-        <h3>Description:</h3>
-        <p class="showDes"><%= selected.description %></p>
-    </br>
-        <div class="review-container">
-            <div class="review-box">
-                <h2>All Reviews for <%= selected.name %>:</h2>
-                <ul class="showUl">
-                        <% selected.reviews.forEach((element, index) => { %>
-                            <li class="reviewLi game-link">
-                                <div>
-                                    <input id="rating<%=index%>" class="rating" type="number" value="<%= element.rating %>">
-                                    <i id="star0<%=index%>" class="fas fa-star"></i>
-                                    <i id="star1<%=index%>" class="fas fa-star"></i>
-                                    <i id="star2<%=index%>" class="fas fa-star"></i>
-                                    <i id="star3<%=index%>" class="fas fa-star"></i>
-                                    <i id="star4<%=index%>" class="fas fa-star"></i>
-                                    <i id="star5<%=index%>" class="fas fa-star"></i>
-                                    <i id="star6<%=index%>" class="fas fa-star"></i>
-                                    <i id="star7<%=index%>" class="fas fa-star"></i>
-                                    <i id="star8<%=index%>" class="fas fa-star"></i>
-                                    <i id="star9<%=index%>" class="fas fa-star"></i>
-                                </div>
-                                <%= element.review %>
-                            </li>
-                        <% }); %>
-                </ul>
+        <div class=game-show-page>
+            <h1><%= selected.name %></h1>
+            <div class="threeContainer">
+                    <img class="showImg" src="<%= selected.image %>" alt="<%= selected.name %> game box">
+                    <ul class="showUl showStats">
+                        <li><span>Number of Players:</span> <%= selected.numPlayers.min %>-<%= selected.numPlayers.max %></li>
+                        <li><span>Play Time:</span> <%= selected.playTime.min %>-<%= selected.playTime.max %></li>
+                        <li><span>Age Rating:</span> <%= selected.ageRating %>+</li>
+                        <li><span>Designers:</span> <%= selected.designer.join(', ') %></li>
+                        <li><span>Average User Rating:</span> <%= avgRating %></li>
+                        <li><span>Genres:</span> <%= selected.genre.join(', ') %></li>
+                        <li class="review-button"><a href="/reviews/new">Review this Game</a></li>
+                    </ul>
+            </div>
+            <h3>Description:</h3>
+            <p class="showDes"><%= selected.description %></p>
+        </br>
+            <div class="review-container">
+                <div class="review-box">
+                    <h2>All Reviews for <%= selected.name %>:</h2>
+                    <ul class="showUl">
+                            <% selected.reviews.forEach((element, index) => { %>
+                                <li class="reviewLi game-link">
+                                    <div>
+                                        <input id="rating<%=index%>" class="rating" type="number" value="<%= element.rating %>">
+                                        <i id="star0<%=index%>" class="fas fa-star"></i>
+                                        <i id="star1<%=index%>" class="fas fa-star"></i>
+                                        <i id="star2<%=index%>" class="fas fa-star"></i>
+                                        <i id="star3<%=index%>" class="fas fa-star"></i>
+                                        <i id="star4<%=index%>" class="fas fa-star"></i>
+                                        <i id="star5<%=index%>" class="fas fa-star"></i>
+                                        <i id="star6<%=index%>" class="fas fa-star"></i>
+                                        <i id="star7<%=index%>" class="fas fa-star"></i>
+                                        <i id="star8<%=index%>" class="fas fa-star"></i>
+                                        <i id="star9<%=index%>" class="fas fa-star"></i>
+                                    </div>
+                                    <%= element.review %>
+                                </li>
+                            <% }); %>
+                    </ul>
+                </div>
             </div>
         </div>
+        
         <%- include('../partials/footer') %>
     </main>
 

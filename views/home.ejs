@@ -46,37 +46,20 @@
         <section class="threeContainer">
             <div class="halfSet">
                 <i class="fas fa-quote-left"></i>
-                </br>
                     <p><%= randomGame.review %></p>
-                </br>
-                <% for (let i=0; i<randomGame.rating; i++) { %>
+                <div>
+                    <% for (let i=0; i<randomGame.rating; i++) { %>
                     <i class="fas fa-star filled"></i>
                 <% } %>
+                </div>
             </div>
             <div class="fourthSet">
                 <a href="/games/<%= randomGame.id %>"><img src="<%= randomGame.image %>" alt="<%= randomGame.name %> game box"></a>
             </div>
-            <div class="fourthSet">
-                <img src="https://picsum.photos/200/200">
+            <div class="adSet">
+                ADVERTISMENT
             </div>
         </section>
-<!--
-        <section class="threeContainer">
-            <div class="threeSet">
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-            </div>
-            <div class="threeSet">
-            </div>
-            <div class="threeSet">
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-                <div class=fourPanel></div>
-            </div>
-        </section> -->
         <%- include('./partials/footer') %>
     </main>
 
