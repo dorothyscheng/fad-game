@@ -18,10 +18,14 @@
             <div>
               <label for="gameName" class="list-title">Game Name: </label>
               <select name="gameName" id="game-name-select">
+                <option value="blank"></option>
                 <% games.forEach(element=>{ %>
                   <option value="<%= element.name %>"><%= element.name %></option>
                 <% }) %>
               </select>
+              <div>
+                <%= message %>
+              </div>
             </div>
             <div>
                 <label for="rating" class="list-title">Rating (1-10):</label>

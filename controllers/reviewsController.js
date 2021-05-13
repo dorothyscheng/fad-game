@@ -32,6 +32,7 @@ router.get('/new', requireLogin, async (req,res)=> {
     res.render('reviews/review-new', {
         username: req.session.currentUser,
         games: sortedGames,
+        message: req.query.message,
         accessUrl: req.accessUrl,
         accessText: req.accessText,
     });
@@ -39,19 +40,24 @@ router.get('/new', requireLogin, async (req,res)=> {
 // Post
 router.post('/', requireLogin, async (req,res,next)=>{
     try {
-        const user= await db.User.findOne({username: req.session.currentUser});
-        const game= await db.Game.findOne({name: req.body.gameName});
-        const newReview = await db.Review.create({
-            user: user._id,
-            game: game._id,
-            rating: req.body.rating,
-            review: req.body.review,
-        });
-        user.reviews.push(newReview._id);
-        game.reviews.push(newReview._id);
-        await game.save();
-        await user.save();
-        res.redirect(`/users/${user._id}`);
+        if (req.body.gameName==='blank') {
+            message='You must select a game to review';
+            return res.redirect(`/reviews/new?message=${message}`);
+        } else {
+            const user= await db.User.findOne({username: req.session.currentUser});
+            const game= await db.Game.findOne({name: req.body.gameName});
+            const newReview = await db.Review.create({
+                user: user._id,
+                game: game._id,
+                rating: req.body.rating,
+                review: req.body.review,
+            });
+            user.reviews.push(newReview._id);
+            game.reviews.push(newReview._id);
+            await game.save();
+            await user.save();
+            res.redirect(`/users/${user._id}`);
+        }
     } catch (error) {
         error.statusCode=400;
         next(error);
