@@ -161,7 +161,7 @@ app.use((err, req, res, next) => {
     message = 'Not Authorized';
   }
   res.render('error', {
-    message: err.toString(),
+    message: message,
     accessUrl: req.accessUrl,
     accessText: req.accessText,
   });

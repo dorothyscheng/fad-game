@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 body {
   height: 100vh;
@@ -201,7 +201,7 @@ main {
 .halfSet p {
   padding: 10px;
   font-style: italic;
-  overflow: scroll;
+  overflow: hidden;
 }
 .fa-quote-left {
   font-size: 25px;
@@ -456,7 +456,18 @@ textarea {
   color: white;
 }
 /* --------------------------------SHOW END---------------*/
-
+/* --------------------------------ERROR END---------------*/
+.error-section {
+  text-align: center;
+}
+.error-title {
+  margin-top: 20px;
+  font-size: 50px;
+}
+.error-message {
+  font-size: 25px;
+}
+/* --------------------------------ERROR END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
 @media screen and (max-width: 650px) {
   #mainFeatured {
