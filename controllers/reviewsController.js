@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../models/index');
 const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
+
 function requireLogin(req, res, next) {
   if (!req.session.currentUser) {
     req.session.destination=req.originalUrl;
@@ -11,6 +12,7 @@ function requireLogin(req, res, next) {
     next();
   }
 }
+
 router.get('/new', requireLogin, async (req, res) => {
   const allGames = await db.Game.find();
 
@@ -34,10 +36,11 @@ router.get('/new', requireLogin, async (req, res) => {
     accessText: req.accessText,
   });
 });
+
 router.post('/', requireLogin, async (req, res, next) => {
   try {
-    const user = await db.User.findOne({ username: req.session.currentUser });
-    const game = await db.Game.findOne({ name: req.body.gameName });
+    const user = await db.User.findOne( { username: req.session.currentUser } );
+    const game = await db.Game.findOne( { name: req.body.gameName } );
     const newReview = await db.Review.create({
       user: user._id,
       game: game._id,
@@ -54,9 +57,10 @@ router.post('/', requireLogin, async (req, res, next) => {
     next(error);
   }
 });
+
 router.get('/:id/edit', requireLogin, async (req, res, next) => {
   try {
-    const selected = await db.Review.findById({ _id: req.params.id })
+    const selected = await db.Review.findById( { _id: req.params.id } )
       .populate('game')
       .populate('user');
     if (req.session.isAdmin === true || req.session.currentUser === selected.user.username) {
@@ -75,9 +79,10 @@ router.get('/:id/edit', requireLogin, async (req, res, next) => {
     next(error);
   }
 });
+
 router.put('/:id', requireLogin, async (req, res, next) => {
   try {
-    const user = await db.User.findOne({ reviews: req.params.id });
+    const user = await db.User.findOne( { reviews: req.params.id } );
     await db.Review.findByIdAndUpdate(
       { _id: req.params.id },
       {
@@ -92,13 +97,14 @@ router.put('/:id', requireLogin, async (req, res, next) => {
     next(error);
   }
 });
+
 router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
-    const review = await db.Review.findById({ _id: req.params.id })
+    const review = await db.Review.findById( { _id: req.params.id } )
       .populate('user');
     if (req.session.isAdmin === true || req.session.currentUser === review.user.username) {
-      const user = await db.User.findOne({ reviews: req.params.id });
-      const game = await db.Game.findOne({ reviews: req.params.id });
+      const user = await db.User.findOne( { reviews: req.params.id } );
+      const game = await db.Game.findOne( { reviews: req.params.id } );
       review.delete();
       user.reviews.remove(req.params.id);
       await user.save();
@@ -114,4 +120,5 @@ router.delete('/:id', requireLogin, async (req, res, next) => {
     next(error);
   }
 });
+
 module.exports = router;

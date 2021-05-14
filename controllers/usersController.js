@@ -4,6 +4,7 @@ const db = require('../models/index');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
 router.use(methodOverride('_method'));
+
 function requireLogin(req,res,next) {;
   if (!req.session.currentUser) {
       req.session.destination=req.originalUrl;
@@ -12,15 +13,17 @@ function requireLogin(req,res,next) {;
       next();
   };
 };
+
 router.get('/login', (req, res) => {
   res.render('users/user-login',{
     accessUrl: req.accessUrl,
     accessText: req.accessText,
   });
 });
+
 router.post('/login', async (req, res) => {
   try {
-    const user = await db.User.findOne({ username: req.body.username });
+    const user = await db.User.findOne( { username: req.body.username } );
     if (!user) {
       return res.redirect('/users/new');
     }
@@ -42,6 +45,7 @@ router.post('/login', async (req, res) => {
     next(error);
   };
 });
+
 router.get('/logout', async (req, res) => {
   try {
     await req.session.destroy();
@@ -50,10 +54,11 @@ router.get('/logout', async (req, res) => {
     next(error);
   };
 });
+
 router.get('/profile', async (req,res, next)=>{
   try {
     if (req.session.currentUser) {
-      const user= await db.User.findOne({username: req.session.currentUser});
+      const user= await db.User.findOne( { username: req.session.currentUser } );
       res.redirect(`/users/${user._id}`);
     } else {
       res.redirect('/users/login');
@@ -62,6 +67,7 @@ router.get('/profile', async (req,res, next)=>{
     next(error);
   };
 });
+
 router.get('/', async (req, res, error) => {
   try {
     const allUsers = await db.User.find();
@@ -74,6 +80,7 @@ router.get('/', async (req, res, error) => {
     next(error);
   };
 });
+
 router.get('/new', (req, res) => {
   res.render('users/user-new',{
     message: req.query.message,
@@ -81,9 +88,10 @@ router.get('/new', (req, res) => {
     accessText: req.accessText,
   });
 });
+
 router.post('/', async (req, res, next) => {
   try {
-    const existingUserCheck= await db.User.findOne({username: req.body.username});
+    const existingUserCheck= await db.User.findOne( { username: req.body.username } );
     if (existingUserCheck) {
       message='That username is already taken. Try another.'
       return res.redirect(`/users/new?message=${message}`);
@@ -106,9 +114,10 @@ router.post('/', async (req, res, next) => {
     next(error);
   };
 });
+
 router.get('/:id', async (req, res, next) => {
   try {
-    const selected = await db.User.findById({ _id: req.params.id }).populate({
+    const selected = await db.User.findById( {  _id: req.params.id } ).populate({
       path: 'reviews',
       populate: { path: 'game' },
     });
@@ -122,6 +131,7 @@ router.get('/:id', async (req, res, next) => {
     next(error);
   };
 });
+
 router.get('/:id/edit', requireLogin, async (req, res, next) => {
   try {
     const selected = await db.User.findById({
@@ -143,6 +153,7 @@ router.get('/:id/edit', requireLogin, async (req, res, next) => {
     next(error);
   };
 });
+
 router.put('/:id', async (req, res, next) => {
   try {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
@@ -163,12 +174,13 @@ router.put('/:id', async (req, res, next) => {
     next(error);
   };
 });
+
 router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
-    const user = await db.User.findById({_id: req.params.id});
+    const user = await db.User.findById( { _id: req.params.id } );
     if (req.session.isAdmin === true || req.session.currentUser === user.username) {
-      await db.User.findByIdAndDelete({ _id: req.params.id });
-      await db.Review.deleteMany({ user: req.params.id });
+      await db.User.findByIdAndDelete( { _id: req.params.id } );
+      await db.Review.deleteMany( { user: req.params.id } );
       res.redirect('/users');
     } else { 
       const error = new Error;
@@ -180,4 +192,5 @@ router.delete('/:id', requireLogin, async (req, res, next) => {
     next(error);
   };
 });
+
 module.exports = router;

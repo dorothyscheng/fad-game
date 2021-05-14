@@ -9,6 +9,7 @@ const db = require('./models');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 const secret = require('./secret');
+
 app.use(
   session({
     secret: secret,
@@ -19,8 +20,10 @@ app.use(
     },
   })
 );
+
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
+
 function checkAccessLink(req,res,next) {
   req.accessUrl = '/users/logout';
   req.accessText = 'Logout';
@@ -30,10 +33,12 @@ function checkAccessLink(req,res,next) {
   };
   next();
 };
+
 app.use(checkAccessLink);
 app.use('/games', gamesController);
 app.use('/users', usersController);
 app.use('/reviews', reviewsController);
+
 ///////////Dummy Data
 // const tempGames = require('./models/tempGames');
 // db.Game.create(tempGames,(err,allGames) => {
@@ -46,10 +51,12 @@ app.use('/reviews', reviewsController);
 //     {$set:{isAdmin: true}},
 //     (err,updatedUser)=>console.log(updatedUser)
 // );
+
 app.get('/', async (req, res) => {
   const allGames= await db.Game.find().populate('reviews');
   let allGameRatings=[];
   let allGamesWithReviews=[];
+
   allGames.forEach(currentGame =>{
     let ratingSum=0;
     if (currentGame.reviews.length>0) {
@@ -77,8 +84,10 @@ app.get('/', async (req, res) => {
   for (let i=0; i<maxTopGames; i++) {
     topNineGames.push(sortedGames[i]);
   };
+
   const allUsers= await db.User.find();
   let allUserReviewsCount=[];
+
   allUsers.forEach(currentUser =>{
     const currentUserObj={
       username: currentUser.username,
@@ -88,6 +97,7 @@ app.get('/', async (req, res) => {
     };
     allUserReviewsCount.push(currentUserObj);
   });
+
   const sortedUsers = allUserReviewsCount.sort((a,b)=>{
     return b.numReviews-a.numReviews;
   });
@@ -99,6 +109,7 @@ app.get('/', async (req, res) => {
   for (let i=0; i<maxTopUsers; i++) {
     topFiveUsers.push(sortedUsers[i]);
   };
+
   const randomNumberGame= Math.floor(Math.random()*allGamesWithReviews.length);
   const randomNumberReview=Math.floor(Math.random()*allGamesWithReviews[randomNumberGame].reviews.length);
   const randomGameObj={
@@ -108,6 +119,7 @@ app.get('/', async (req, res) => {
     id: allGamesWithReviews[randomNumberGame]._id,
     image: allGamesWithReviews[randomNumberGame].image,
   };
+
   res.render('home.ejs', {
     accessUrl: req.accessUrl,
     accessText: req.accessText,
@@ -116,11 +128,13 @@ app.get('/', async (req, res) => {
     randomGame: randomGameObj,
   });
 });
+
 app.get('*', (req, res, next) => {
   const error = new Error();
   error.statusCode = 404;
   next(error);
 });
+
 app.use((err, req, res, next) => {
   let message = 'Something went wrong.';
   if (!err.statusCode) err.statusCode = 500;
@@ -140,6 +154,7 @@ app.use((err, req, res, next) => {
     accessText: req.accessText,
   });
 });
+
 app.listen(PORT, () => {
   console.log(`Server Active: http://localhost:${PORT}`);
 });
