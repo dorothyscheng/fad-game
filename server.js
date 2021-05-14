@@ -1,18 +1,18 @@
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const express = require('express');
 const session = require('express-session');
 const app = express();
+require('dotenv').config();
 const gamesController = require('./controllers/gamesController');
 const usersController = require('./controllers/usersController');
 const reviewsController = require('./controllers/reviewsController');
 const db = require('./models');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
-const secret = require('./secret');
 
 app.use(
   session({
-    secret: secret,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
