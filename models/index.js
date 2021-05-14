@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connect = process.env.MOGODB_URI || 'mongodb://localhost:27017/FAD-Games';
+const connect = process.env.MONGODB_URI || 'mongodb://localhost:27017/FAD-Games';
 mongoose.connect(connect, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
