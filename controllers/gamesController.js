@@ -5,7 +5,8 @@ const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
 function requireLogin(req, res, next) {
   if (!req.session.currentUser) {
-    res.redirect(`/users/login?destination=${req.originalUrl}`);
+    req.session.destination=req.originalUrl;
+    res.redirect('/users/login');
   } else {
     next();
   }

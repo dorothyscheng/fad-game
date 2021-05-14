@@ -6,13 +6,13 @@ const bcrypt = require('bcrypt');
 router.use(methodOverride('_method'));
 function requireLogin(req,res,next) {;
   if (!req.session.currentUser) {
-      res.redirect(`/users/login?destination=${req.originalUrl}`);
+      req.session.destination=req.originalUrl;
+      res.redirect('/users/login');
   } else {
       next();
   };
 };
 router.get('/login', (req, res) => {
-  req.session.destination=req.query.destination;
   res.render('users/user-login',{
     accessUrl: req.accessUrl,
     accessText: req.accessText,
