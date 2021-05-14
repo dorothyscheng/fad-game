@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const gameSchema = new mongoose.Schema({
   name: { type: String, required: true, minLength: 1 },
   description: {type: String, default: 'No description provided'},
@@ -22,7 +21,5 @@ const gameSchema = new mongoose.Schema({
     },
   ],
 });
-
 const Game = mongoose.model('Game', gameSchema);
-
 module.exports = Game;

@@ -36,7 +36,6 @@ nav {
 .nav a:hover {
   color: white;
 }
-
 .search-bar {
   align-self: flex-end;
   margin: 10px 10px 0 0;
@@ -92,19 +91,17 @@ main {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(202, 202, 202));
   background-repeat: no-repeat;
 }
-
-#mainFeatured {
+.main-featured {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 300px;
 }
-#mainFeatured h1 {
+.main-featured h1 {
   font-size: 50px;
   margin-left: 20px;
 }
-
-.threeContainer {
+.three-container {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -113,14 +110,13 @@ main {
   padding: 20px;
   box-sizing: border-box;
 }
-.topContainer {
+.top-container {
   background: rgb(182, 181, 181);
   padding: 30px 20px 30px 20px;
   margin-bottom: 30px;
   box-sizing: border-box;
 }
-
-.threeSet {
+.three-set {
   width: 31%;
   min-width: 200px;
   min-height: 300px;
@@ -130,15 +126,14 @@ main {
   align-content: space-around;
   box-sizing: border-box;
 }
-.threeSet a {
+.three-set a {
   display: flex;
   justify-content: center;
 }
-.threeSet img {
+.three-set img {
   width: 85%;
 }
-
-.fourPanel {
+.four-panel {
   width: 40%;
   height: 40%;
   margin: 10px;
@@ -148,29 +143,26 @@ main {
   justify-content: space-around;
   align-items: center;
 }
-.threeSet img {
+.three-set img {
   width: 100%;
   transition: box-shadow .2s ease-in-out;
   margin-bottom: 5px;
 }
-.threeSet img:hover {
+.three-set img:hover {
   box-shadow: 3px 3px 6px black;
 }
-
-.mainTitle {
+.main-title {
   font-size: 25px;
   text-align: center;
   margin: 0px 0 15px 0;
 }
-
-.middleBest {
+.middle-best {
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
 }
-
-.circleContainer {
+.circle-container {
   padding: 0 25px 25px 25px;
   margin: 30px 0 30px 0;
   display: flex;
@@ -191,8 +183,7 @@ main {
 .round img:hover{
   box-shadow: 3px 3px 6px black;
 }
-
-.halfSet {
+.half-set {
   margin-bottom: 20px;
   width: 45%;
   height: 300px;
@@ -203,7 +194,7 @@ main {
   flex-direction: column;
   background-color: rgb(182, 181, 181);
 }
-.halfSet p {
+.half-set p {
   padding: 10px;
   font-style: italic;
   overflow: hidden;
@@ -213,38 +204,36 @@ main {
   align-self: flex-start;
   margin: 10px 0 0 20px;
 }
-
-.fourthSet {
+.fourth-set {
   width: 25%;
   height: 300px;
   display: flex;
   align-items: center;
 }
-.fourthSet img {
+.fourth-set img {
   width: 100%;
   transition: box-shadow .2s ease-in-out;
 }
-.fourthSet img:hover {
+.fourth-set img:hover {
   box-shadow: 3px 3px 6px black;
 }
-
-.adSet {
+.ad-set {
   width: 25%;
   height: 300px;
   background-image: url('https://picsum.photos/500/500');
 }
 /* --------------------------------INDEX CSS---------------- */
-#indexContainer {
+.index-container {
   display: flex;
   flex-direction: row;
 }
-.adLong {
+.ad-long {
   margin-top: 10px;
   height: 600px;
   width: 15%;
   background: url('https://picsum.photos/150/600');
 }
-.indexUl {
+.index-ul {
   list-style-type: none;
   width: 70%;
   margin: 20px 40px 20px 40px;
@@ -252,82 +241,78 @@ main {
 .title {
   font-size: 20px;
 }
-
-#indexList {
+.index-list {
   padding: 10px;
   display: flex;
   flex-direction: row;
 }
-.picHolder {
+.pic-holder {
   width: 30%;
   min-width: 150px;
 }
-.picHolder img {
+.pic-holder img {
   width: 100%;
 }
-
-.userPicHolder{ 
+.user-pic-holder{ 
   width: 150px;
 }
-
-.userIndexPic {
+.user-index-pic {
   object-fit: cover;
   height: 150px;
   width: 150px;
   border-radius: 50%;
 }
-
 .holder {
   width: 40%;
   margin-top: 10px;
   min-width: 150px;
   background: url('https://picsum.photos/500/500');
 }
-.editDelete {
+.edit-delete {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.editDelete button {
+.edit-delete button {
   background: none;
   border-radius: 5px;
   margin-left: 10px;
   padding: 3px;
   font-size: 15px;
 }
-.editDelete button:hover {
+.edit-delete button:hover {
   background: red;
   color: white;
 }
-.editDelete a {
+.edit-delete a {
   padding: 3px;
   border: 1px solid black;
   border-radius: 5px;
   font-size: 15px;
 }
-.editDelete a:hover {
+.edit-delete a:hover {
   background-color: black;
 }
-.indexInfo {
+.index-info {
   width: 75%;
   padding: 0 0 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.indexInfo a {
+.index-info a {
   text-decoration: none;
   color: black;
   transition: text-shadow 0.2s ease-in-out;
 }
-.indexInfo a:hover {
+.index-info a:hover {
   color: white;
   text-shadow: 2px 2px 4px black;
 }
 /* --------------------------------INDEX END---------------- */
 /* --------------------------------FORM START---------------*/
-.formHolder {
+.form-holder {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -335,11 +320,10 @@ main {
   margin: 10px;
   background: lightgrey;
 }
-.formHolder button {
+.form-holder button {
   width: 100%;
   height: 30px;
 }
-
 form button {
   background: none;
   border: 1px solid black;
@@ -350,11 +334,9 @@ form button:hover {
   background: black;
   color: white;
 }
-
-.formHolder div {
+.form-holder div {
   margin-bottom: 5px;
 }
-
 .list-title {
   display: inline-block;
   text-align: end;
@@ -379,7 +361,6 @@ input {
 .rating {
   display: none;
 }
-
 .textarea-box {
   display: flex;
 }
@@ -392,63 +373,57 @@ textarea {
 .game-show-page {
   padding: 15px;
 }
-.twoHolder {
+.two-holder {
   display: flex;
   flex-direction: column;
   width: 70%;
   margin: 0 40px 20px 30px;
 }
-.twoHolder h3 {
+.two-holder h3 {
   margin-bottom: 15px;
 }
-
 .game-link {
   font-size: 20px;
 }
-
-.showDes {
+.show-des {
   display: block;
   width: 100%;
   margin-left: 10px;
 }
-
-.showUl {
+.show-ul {
   list-style-type: none;
 }
-.showUl a {
+.show-ul a {
   text-decoration: none;
   color: black;
   transition: text-shadow 0.2s ease-in-out;
 }
-.showUl a:hover {
+.show-ul a:hover {
   color: white;
   text-shadow: 2px 2px 4px black;
 }
-
-.showImg {
+.show-img {
   width: 40%;
   max-width: 500px;
   margin-bottom: 10px;
 }
-.showStats {
+.show-stats {
   width: 55%;
   line-height: 35px;
   font-size: 18px;
 }
-.showStats span {
+.show-stats span {
   font-weight: bold;
 }
-
-.reviewLi {
+.review-li {
   margin-bottom: 10px;
 }
-
-.profilePic {
+.profile-pic {
   width: 30%;
   padding-right: 20px;
   text-align: center;
 }
-.profilePic img {
+.profile-pic img {
   margin-top: 10px;
   margin-bottom: 20px;
   border-radius: 50%;
@@ -477,7 +452,6 @@ textarea {
   background: black;
   color: white;
 }
-
 /* --------------------------------SHOW END---------------*/
 /* --------------------------------ERROR END---------------*/
 .error-section {
@@ -493,41 +467,40 @@ textarea {
 /* --------------------------------ERROR END---------------*/
 /* -------------------------- RESPONSIVE MEDIA */
 @media screen and (max-width: 650px) {
-  #mainFeatured {
+  .main-featured {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 300px;
   }
-  #mainFeatured h1 {
+  .main-featured h1 {
     font-size: 30px;
   }
-  #mainFeatured img {
+  .main-featured img {
     width: 15%;
   }
-
-  #indexContainer {
+  .index-container {
     display: flex;
     flex-direction: column;
     min-width: 600px;
   }
-  .adLong {
+  .ad-long {
     margin-top: 10px;
     height: 100px;
     width: 100%;
     background-color: rgb(201, 201, 201);
   }
-  .indexUl {
+  .index-ul {
     width: 100%;
   }
-  .threeContainer {
+  .three-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-  .threeSet {
+  .three-set {
     width: 50%;
     min-width: 200px;
     min-height: 300px;
@@ -536,7 +509,7 @@ textarea {
     margin-bottom: 20px;
     background-color: rgb(167, 167, 167);
   }
-  .circleContainer {
+  .circle-container {
     margin: 15px 0 15px 0;
     display: flex;
     flex-direction: column;
@@ -553,7 +526,7 @@ textarea {
     align-content: space-around;
     margin-bottom: 20px;
   }
-  .fourthSet {
+  .fourth-set {
     width: 40%;
     min-width: 200px;
     min-height: 300px;
@@ -561,11 +534,10 @@ textarea {
     align-content: space-around;
     margin-bottom: 20px;
   }
-
-  .adLong {
+  .ad-long {
     background: url('https://picsum.photos/1000/100');
   }
-  .profilePic img {
+  .profile-pic img {
     margin-top: 10px;
     border-radius: 50%;
     width: 150px;

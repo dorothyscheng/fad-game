@@ -7,20 +7,20 @@
 <body>
     <%- include('../partials/nav') %>
     <main>
-        <section id="indexContainer">
-            <div class="adLong">
+        <section class="index-container">
+            <div class="ad-long">
                 ADVERTISMENT
             </div>
-                <ul class="indexUl">
+                <ul class="index-ul">
                 <% games.forEach(element=>{ %>
-                <li id="indexList">
-                    <div class="picHolder">
+                <li class="index-list">
+                    <div class="pic-holder">
                         <img src="<%= element.image%>">
                     </div>
-                    <div class=indexInfo>
+                    <div class=index-info>
                         <a class="title" href="/games/<%= element._id %>"><%= element.name %></a>
                         <p><%=element.description%></p>
-                        <div class="editDelete">
+                        <div class="edit-delete">
                             <a href="/games/<%= element._id %>/edit">Edit</a>
                             <form action="/games/<%= element._id %>?_method=DELETE" method="POST">
                                 <button type="submit">DELETE</button>
@@ -30,12 +30,11 @@
                 </li>
                 <% }) %>
                 </ul>
-            <div class="adLong">
+            <div class="ad-long">
                 ADVERTISMENT
             </div>
         </section>
         <%- include('../partials/footer') %>
     </main>
-
 </body>
 </html>

@@ -6,12 +6,10 @@ function editReviewStars(x) {
         currentStar.classList.add('filled');
     };
 };
-
 function iterateGameReviews() {
     const gameEl = document.querySelectorAll('.game-link');
     for (let i=0; i<gameEl.length; i++) {
         editReviewStars(i);
     }
 }
-
 iterateGameReviews();

@@ -3,10 +3,14 @@ const router = express.Router();
 const db = require('../models/index');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
-
 router.use(methodOverride('_method'));
-
-/////////login
+function requireLogin(req,res,next) {;
+  if (!req.session.currentUser) {
+      res.redirect(`/users/login?destination=${req.originalUrl}`);
+  } else {
+      next();
+  };
+};
 router.get('/login', (req, res) => {
   req.session.destination=req.query.destination;
   res.render('users/user-login',{
@@ -14,7 +18,6 @@ router.get('/login', (req, res) => {
     accessText: req.accessText,
   });
 });
-// Login post
 router.post('/login', async (req, res) => {
   try {
     const user = await db.User.findOne({ username: req.body.username });
@@ -39,15 +42,6 @@ router.post('/login', async (req, res) => {
     next(error);
   };
 });
-//////login redirect
-function requireLogin(req,res,next) {;
-  if (!req.session.currentUser) {
-      res.redirect(`/users/login?destination=${req.originalUrl}`);
-  } else {
-      next();
-  };
-};
-/////////log out
 router.get('/logout', async (req, res) => {
   try {
     await req.session.destroy();
@@ -56,7 +50,6 @@ router.get('/logout', async (req, res) => {
     next(error);
   };
 });
-// Profile
 router.get('/profile', async (req,res, next)=>{
   try {
     if (req.session.currentUser) {
@@ -68,8 +61,7 @@ router.get('/profile', async (req,res, next)=>{
   } catch (error) {
     next(error);
   };
-})
-// Index
+});
 router.get('/', async (req, res, error) => {
   try {
     const allUsers = await db.User.find();
@@ -80,9 +72,8 @@ router.get('/', async (req, res, error) => {
     });
   } catch (error) {
     next(error);
-  }
+  };
 });
-// New
 router.get('/new', (req, res) => {
   res.render('users/user-new',{
     message: req.query.message,
@@ -90,7 +81,6 @@ router.get('/new', (req, res) => {
     accessText: req.accessText,
   });
 });
-// Post
 router.post('/', async (req, res, next) => {
   try {
     const existingUserCheck= await db.User.findOne({username: req.body.username});
@@ -101,7 +91,7 @@ router.post('/', async (req, res, next) => {
       const hashPassword = await bcrypt.hash(req.body.password, 10);
       if (!req.body.profilePic) {
         delete req.body.profilePic;
-      }
+      };
       await db.User.create({
         username: req.body.username,
         password: hashPassword,
@@ -110,13 +100,12 @@ router.post('/', async (req, res, next) => {
         preferredGenre: req.body.preferredGenre,
       });
       res.redirect('/users');
-    }
+    };
   } catch (error) {
     error.statusCode = 400;
     next(error);
-  }
+  };
 });
-// Show
 router.get('/:id', async (req, res, next) => {
   try {
     const selected = await db.User.findById({ _id: req.params.id }).populate({
@@ -131,9 +120,8 @@ router.get('/:id', async (req, res, next) => {
   } catch (error) {
     error.statusCode = 404;
     next(error);
-  }
+  };
 });
-// Edit
 router.get('/:id/edit', requireLogin, async (req, res, next) => {
   try {
     const selected = await db.User.findById({
@@ -149,13 +137,12 @@ router.get('/:id/edit', requireLogin, async (req, res, next) => {
       const error = new Error;
       error.statusCode = 401; 
       next(error);
-    }
+    };
   } catch (error) {
     error.statusCode = 404;
     next(error);
-  }
+  };
 });
-// Update
 router.put('/:id', async (req, res, next) => {
   try {
     const hashPassword = await bcrypt.hash(req.body.password, 10);
@@ -174,14 +161,12 @@ router.put('/:id', async (req, res, next) => {
     res.redirect(`/users/${req.params.id}`);
   } catch (error) {
     next(error);
-  }
+  };
 });
-// Destroy
 router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
     const user = await db.User.findById({_id: req.params.id});
-    if (req.session.isAdmin === true || req.session.currentUser === user.username )
-    {
+    if (req.session.isAdmin === true || req.session.currentUser === user.username) {
       await db.User.findByIdAndDelete({ _id: req.params.id });
       await db.Review.deleteMany({ user: req.params.id });
       res.redirect('/users');
@@ -193,7 +178,6 @@ router.delete('/:id', requireLogin, async (req, res, next) => {
   } catch (error) {
     error.statusCode = 404;
     next(error);
-  }
+  };
 });
-
 module.exports = router;

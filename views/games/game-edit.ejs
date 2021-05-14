@@ -8,11 +8,11 @@
 <body>
   <%- include('../partials/nav') %>
     <main>
-      <div class=threeContainer>
-        <div class=picHolder>
+      <div class=three-container>
+        <div class=pic-holder>
           <img id="display-img" src="" alt="game box">
         </div>
-        <div class=formHolder>
+        <div class=form-holder>
           <h1>Edit <%= selected.name %></h1>
           <form action="/games/<%= selected._id %>?_method=PUT" method="POST">
             <div>
@@ -63,6 +63,5 @@
       </div>
       <%- include('../partials/footer') %>
     </main>
-
 </body>
 </html>

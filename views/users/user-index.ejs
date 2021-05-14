@@ -7,34 +7,33 @@
 <body>
     <%- include('../partials/nav') %>
     <main>
-        <section id="indexContainer">
-            <div class="adLong">
+        <section class="index-container">
+            <div class="ad-long">
                 ADVERTISMENT
             </div>
-                <ul class="indexUl">
-                <% users.forEach(element=>{ %>
-                <li id="indexList">
-                    <div class="userPicHolder">
-                        <img class="userIndexPic" src="<%=element.profilePic%>">
-                    </div>
-                    <div class=indexInfo>
-                        <a class="title" href="/users/<%= element._id %>"><%= element.username %></a>
-                        <div class="editDelete">
-                            <a href="/users/<%= element._id %>/edit">Edit</a>
-                            <form action="/users/<%= element._id %>?_method=DELETE" method="POST">
-                                <button type="submit">DELETE</button>
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                <% }) %>
+                <ul class="index-ul">
+                    <% users.forEach(element=>{ %>
+                        <li class="index-list">
+                            <div class="user-pic-holder">
+                                <img class="user-index-pic" src="<%=element.profilePic%>">
+                            </div>
+                            <div class=index-info>
+                                <a class="title" href="/users/<%= element._id %>"><%= element.username %></a>
+                                <div class="edit-delete">
+                                    <a href="/users/<%= element._id %>/edit">Edit</a>
+                                    <form action="/users/<%= element._id %>?_method=DELETE" method="POST">
+                                        <button type="submit">DELETE</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    <% }) %>
                 </ul>
-            <div class="adLong">
+            <div class="ad-long">
                 ADVERTISMENT
             </div>
         </section>
         <%- include('../partials/footer') %>
     </main>
-
 </body>
 </html>

@@ -2,10 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/index');
 const methodOverride = require('method-override');
-
 router.use(methodOverride('_method'));
-
-//////login redirect
 function requireLogin(req, res, next) {
   if (!req.session.currentUser) {
     res.redirect(`/users/login?destination=${req.originalUrl}`);
@@ -13,13 +10,10 @@ function requireLogin(req, res, next) {
     next();
   }
 }
-
 // reference for fuzzy search: https://www.youtube.com/watch?v=9_lKMTXVk64
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$!#\s]/g, '\\$&');
 };
-
-// INDEX
 router.get('/', async (req, res, next) => {
   try {
     let allGames=[];
@@ -39,14 +33,12 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-//NEW
 router.get('/new', requireLogin, (req, res) => {
   res.render('games/game-new', {
     accessUrl: req.accessUrl,
     accessText: req.accessText,
   });
 });
-//POST
 router.post('/', async (req, res, next) => {
   try {
     const player = {
@@ -81,14 +73,13 @@ router.post('/', async (req, res, next) => {
     next(error);
   }
 });
-// SHOW
 router.get('/:id', async (req, res, next) => {
   try {
     const selectedGame = await db.Game.findById({
       _id: req.params.id,
-    }).populate({
-      path: 'reviews',
-      populate: { path: 'game' },
+      }).populate({
+        path: 'reviews',
+        populate: { path: 'game' },
     });
     let ratingSum = 0;
     selectedGame.reviews.forEach((element) => {
@@ -106,7 +97,6 @@ router.get('/:id', async (req, res, next) => {
     next(error);
   }
 });
-// EDIT
 router.get('/:id/edit', requireLogin, async (req, res, next) => {
   try {
     if (req.session.isAdmin === true) {
@@ -126,7 +116,6 @@ router.get('/:id/edit', requireLogin, async (req, res, next) => {
     next(error);
   }
 });
-// PUT
 router.put('/:id', async (req, res, next) => {
   try {
     const player = {
@@ -159,7 +148,6 @@ router.put('/:id', async (req, res, next) => {
     next(error);
   }
 });
-// DESTROY
 router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
     if (req.session.isAdmin === true) {
@@ -182,5 +170,4 @@ router.delete('/:id', requireLogin, async (req, res, next) => {
     next(error);
   }
 });
-
 module.exports = router;

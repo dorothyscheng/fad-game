@@ -8,49 +8,32 @@
   <body>
     <%- include('../partials/nav') %>
     <main>
-      <div class="threeContainer">
-        <div class="profilePic">
+      <div class="three-container">
+        <div class="profile-pic">
           <img id="display-img" src="" alt="user profile pic">
         </div>
-        <div class="formHolder">
+        <div class="form-holder">
           <h1>Edit User</h1>
           <form action="/users/<%= selected._id %>?_method=PUT" method="POST">
             <div>
               <label for="username" class="list-title">Username:</label>
-              <input
-                type="text"
-                name="username"
-                value="<%= selected.username %>"
-              />
+              <input type="text" name="username" value="<%= selected.username %>" />
             </div>
             <div>
               <label for="password" class="list-title">Password: </label>
-              <input
-                type="text"
-                name="password"
-                placeholder=" required"
-                required
-              />
+              <input type="text" name="password" placeholder=" required" required />
             </div>
             <div>
               <label for="age" class="list-title">Age: </label>
               <input type="number" name="age" value="<%= selected.age %>" />
             </div>
             <div>
-              <label for="profilePic" class="list-title"
-                >Profile Pic (URL):</label
-              >
+              <label for="profilePic" class="list-title">Profile Pic (URL):</label>
               <input id="image" type="text" name="profilePic" value="<%= selected.profilePic %>" />
             </div>
             <div>
-              <label for="preferredGenre" class="list-title"
-                >Preferred Genre:</label
-              >
-              <input
-                type="text"
-                name="preferredGenre"
-                value="<%= selected.preferredGenre %>"
-              />
+              <label for="preferredGenre" class="list-title">Preferred Genre:</label>
+              <input type="text" name="preferredGenre" value="<%= selected.preferredGenre %>" />
             </div>
             <div>
               <button type="submit">Submit</button>
@@ -60,6 +43,5 @@
       </div>
       <%- include('../partials/footer') %>
     </main>
-    
   </body>
 </html>

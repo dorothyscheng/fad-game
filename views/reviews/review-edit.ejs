@@ -2,20 +2,18 @@
 <html lang="en">
   <head>
     <%- include('../partials/head') %>
-    <!-- review-edit JS -->
     <script src="/scripts/review-edit.js" defer></script>
-    <!-- review-new JS -->
     <script src="/scripts/review-new.js" defer></script>
     <title>Edit Review</title>
   </head>
   <body>
     <%- include('../partials/nav') %>
     <main>
-      <div class="threeContainer">
+      <div class="three-container">
         <div class="holder">
           ADVERTISMENT
         </div>
-        <div class=formHolder>
+        <div class=form-holder>
           <h1>Edit Review</h1>
           <form action="/reviews/<%= selected._id %>?_method=PUT" method="POST">
             <div>
@@ -50,6 +48,5 @@
       </div>
       <%- include('../partials/footer') %>
     </main>
-
   </body>
 </html>

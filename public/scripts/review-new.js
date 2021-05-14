@@ -1,5 +1,4 @@
 const stars=document.querySelectorAll('.fa-star');
-
 function newReviewStars(e) {
     for (let i=0; i<stars.length; i++) {
         const currentStar=document.getElementById(`star${i}`);

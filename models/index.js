@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
 const connect = 'mongodb://localhost:27017/FAD-Games';
-
 mongoose.connect(connect, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -17,7 +15,6 @@ mongoose.connection.on('disconnected', () => {
 mongoose.connection.on('error', (err) => {
   console.log('ALERT! Error:', err);
 });
-
 module.exports = {
   Game: require('./Game'),
   Review: require('./Review'),
