@@ -1,8 +1,8 @@
-const PORT = process.env.PORT || 4000;
 const express = require('express');
 const session = require('express-session');
 const app = express();
 require('dotenv').config();
+const PORT = process.env.PORT || 4000;
 const gamesController = require('./controllers/gamesController');
 const usersController = require('./controllers/usersController');
 const reviewsController = require('./controllers/reviewsController');
