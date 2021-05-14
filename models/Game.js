@@ -12,7 +12,7 @@ const gameSchema = new mongoose.Schema({
     max: Number,
   },
   designer: [String],
-  image: {type: String, default: 'https://www.jing.fm/clipimg/full/19-195367_board-game-clip-art-black-and-white-board.png'},
+  image: {type: String, default: 'https://www.crossfitgrandview.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png'},
   genre: [String],
   reviews: [
     {

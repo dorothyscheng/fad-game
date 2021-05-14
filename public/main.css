@@ -213,6 +213,7 @@ main {
 .fourth-set img {
   width: 100%;
   transition: box-shadow .2s ease-in-out;
+  max-height: 350px;
 }
 .fourth-set img:hover {
   box-shadow: 3px 3px 6px black;

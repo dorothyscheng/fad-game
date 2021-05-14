@@ -39,7 +39,7 @@ app.use('/games', gamesController);
 app.use('/users', usersController);
 app.use('/reviews', reviewsController);
 
-///////////Dummy Data
+/////////Dummy Data
 // const tempGames = require('./models/tempGames');
 // db.Game.create(tempGames,(err,allGames) => {
 //     if (err) return console.log(err);
